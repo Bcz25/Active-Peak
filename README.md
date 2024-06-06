@@ -1,7 +1,9 @@
 # Active-Peak
 ![Static Badge](https://img.shields.io/badge/JavaScript-(50%25)-yellow)
-![Static Badge](https://img.shields.io/badge/HTML5-(40%25)-red)
+![Static Badge](https://img.shields.io/badge/Handlebars-(25%25)-orange)
 ![Static Badge](https://img.shields.io/badge/CSS-(10%25)-blue)
+![Static Badge](https://img.shields.io/badge/SQL-(10%25)-lightblue)
+![Static Badge](https://img.shields.io/badge/JSON-(5%25)-purple)
 
 - A fitness manager app for enthusiasts to connect by sharing workout routines, posting progress pictures, and finding exercises tailored to their needs!
 
