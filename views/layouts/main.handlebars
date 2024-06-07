@@ -1,0 +1,30 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Active Peak - Fitness Management Platform</title>
+    <link rel='stylesheet' href='/css/jass.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li><a href='/'>Home</a></li>
+        <li><a href='/dashboard'>Dashboard</a></li>
+        {{#if loggedIn}}
+        <li><a href='/logout' id="logout">Logout</a></li>
+        {{else}}
+        <li><a href='/login'>Login</a></li>
+        {{/if}}
+      </ul>
+    </header>
+
+    <main>
+      {{{body}}}
+    </main>
+    <footer>
+      <p>&copy; 2024 Active Peak</p>
+    </footer>
+  </body>
+  <script src='./js/logout.js'></script>
+</html>
