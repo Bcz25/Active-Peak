@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-class MuscleGroup extends Model {}
+class Exercise extends Model {}
 
-MuscleGroup.init(
+Exercise.init(
   {
   
-    MuscleGroup_name: {
+    Exercise_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -31,8 +31,8 @@ MuscleGroup.init(
     timestamps: true, 
     freezeTableName: true,
     underscored: true,
-    modelName: 'muscle_group',
+    modelName: 'exercise_card',
   }
 );
 
-module.exports = MuscleGroup;
+module.exports = Exercise;
