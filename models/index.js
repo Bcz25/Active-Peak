@@ -1,16 +1,16 @@
 // import models
-const MuscleGroup = require('./MuscleGroup');
+const Exercise = require('./Exercise');
 const Routine = require('./routine');
 const Users = require('./users');
-const WorkoutTime = require('./WorkoutTime');
+const WorkoutTemplate = require('./WorkoutTemplate');
 
 
 
 // relationships
-MuscleGroup.belongsTo(WorkoutTime, { foreignKey: 'workoutTime_id' });
-WorkoutTime.hasMany(MuscleGroup, { foreignKey: 'workoutTime_id' });
+Exercise.belongsTo(WorkoutTemplate, { foreignKey: 'WorkoutTemplate_id' });
+WorkoutTemplate.hasMany(Exercise, { foreignKey: 'exercise_id' });
 
-MuscleGroup.belongsToMany(Users, { through: MuscleGroupGoals, foreignKey: 'muscleGroup_id' });
-Users.belongsToMany(MuscleGroup, { through: MuscleGroupGoals, foreignKey: 'users_id' });
+Exercise.belongsToMany(Users, { through: MuscleGroupGoals, foreignKey: 'exercise_id' });
+Users.belongsToMany(Exercise, { through: MuscleGroupGoals, foreignKey: 'users_id' });
 
-module.exports = {MuscleGroup, Routine, Users, WorkoutTime};
+module.exports = {Exercise, Routine, Users, WorkoutTemplate};

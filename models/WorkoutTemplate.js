@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class WorkoutTime extends Model {}
+class WorkoutTemplate extends Model {}
 
-WorkoutTime.init(
+WorkoutTemplate.init(
   {
     
     product_id: {
@@ -26,8 +26,8 @@ WorkoutTime.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Workout_Time',
+    modelName: 'Workout_Template',
   }
 );
 
-module.exports = WorkoutTime;
+module.exports = WorkoutTemplate;
