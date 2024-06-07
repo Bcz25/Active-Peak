@@ -26,7 +26,7 @@ WorkoutTemplate.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Workout_Template',
+    modelName: 'WorkoutTemplate',
   }
 );
 

@@ -1,8 +1,8 @@
 // Import the sequelize connection, the User model, and the Post model, and the data from the JSON files.
 const sequelize = require('../config/connection');
-const { Users, Post } = require('../models');
-const userData = require('./userData.json');
-const postData = require('./postData.json');
+const { Users, Exercise } = require('../models');
+const userData = require('./userdata.json');
+const exerciseData = require('./exercisedata.json');
 // Define the function that will seed the database
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -12,7 +12,7 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  await Post.bulkCreate(postData, {
+  await Users.bulkCreate(exerciseData, {
     individualHooks: true,
     returning: true,
   });
