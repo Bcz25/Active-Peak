@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Goals extends Model {}
+class Users extends Model {}
 
-Tag.init(
+Users.init(
   {
   
     id: {
@@ -11,7 +11,7 @@ Tag.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    Goals_name: {
+    Users_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -23,8 +23,8 @@ Tag.init(
     timestamps: false, 
     freezeTableName: true,
     underscored: true,
-    modelName: 'Goals',
+    modelName: 'Users',
   }
 );
 
-module.exports = Goals;
+module.exports = Users;

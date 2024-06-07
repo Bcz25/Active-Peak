@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-class Cardio extends Model {}
+class Routine extends Model {}
 
-Cardio.init(
+Routine.init(
   {
     // Define columns here
     id: {
@@ -12,7 +12,7 @@ Cardio.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    cardio_name: {
+    Routine_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -26,8 +26,8 @@ Cardio.init(
     timestamps: false, 
     freezeTableName: true,
     underscored: true,
-    modelName: 'cardio',
+    modelName: 'Routine',
   }
 );
 
-module.exports = Cardio;
+module.exports = Routine;
