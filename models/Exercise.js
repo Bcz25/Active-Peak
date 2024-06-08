@@ -31,7 +31,7 @@ Exercise.init(
     timestamps: true, 
     freezeTableName: true,
     underscored: true,
-    modelName: 'exercise_card',
+    modelName: 'Exercise',
   }
 );
 
