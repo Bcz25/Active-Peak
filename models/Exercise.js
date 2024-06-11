@@ -1,10 +1,9 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 class Exercise extends Model {}
 
 Exercise.init(
   {
-  
     Exercise_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,26 +11,40 @@ Exercise.init(
     description: {
       type: DataTypes.TEXT,
     },
-    price: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
+    muscle_group: {
+      type: DataTypes.STRING,
     },
-    category_id: {
+    equipment: {
+      type: DataTypes.STRING,
+    },
+    Template_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'category',
-        key: 'id',
+        model: "Template",
+        key: "id",
+      },
+    },
+    Routine_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Routine",
+        key: "id",
+      },
+    },
+    users_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Users",
+        key: "id",
       },
     },
   },
-    
-  
   {
     sequelize,
-    timestamps: true, 
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Exercise',
+    modelName: "Exercise",
   }
 );
 

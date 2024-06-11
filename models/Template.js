@@ -1,17 +1,16 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Routine extends Model {}
+class Template extends Model {}
 
-Routine.init(
+Template.init(
   {
-    // Define columns here
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    Routine_name: {
+    workout_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -21,21 +20,14 @@ Routine.init(
     muscle_group: {
       type: DataTypes.STRING,
     },
-    users_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Users",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "Routine",
+    modelName: "Template",
   }
 );
 
-module.exports = Routine;
+module.exports = Template;
