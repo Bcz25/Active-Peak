@@ -15,6 +15,10 @@ if (process.env.DB_URL) {
     {
       host: 'localhost',
       dialect: 'postgres',
+      // protocol: 'postgres',
+      // logging: false,
+      dialectOptions: {
+        apiKey: process.env.DB_API_KEY,
     }
   );
 }
