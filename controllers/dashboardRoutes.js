@@ -38,4 +38,15 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+// // Example route using axios
+// router.get("/some-route", async (req, res) => {
+//   try {
+//     const response = await axios.get("https://api.example.com/data");
+//     res.json(response.data);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     res.status(500).json({ error: "Error fetching data" });
+//   }
+// });
+
 module.exports = router;

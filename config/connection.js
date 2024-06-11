@@ -19,7 +19,7 @@ if (process.env.DB_URL) {
       // logging: false,
       dialectOptions: {
         apiKey: process.env.DB_API_KEY,
-    }
-  );
+    },
+  });
 }
 module.exports = sequelize;
