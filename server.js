@@ -1,5 +1,6 @@
 // Line 2-10: Import the necessary modules
 const path = require("path");
+const axios = require("axios");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
@@ -12,6 +13,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const app = express();
 // Line 14: Define the port
 const PORT = process.env.PORT || 3001;
+
 // Line 16-17: Create a new handlebars object and define the session object
 const hbs = exphbs.create({ helpers });
 // Line 18-26: Define the session object
