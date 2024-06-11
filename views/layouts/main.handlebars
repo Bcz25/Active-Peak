@@ -1,30 +1,39 @@
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Active Peak - Fitness Management Platform</title>
-    <link rel='stylesheet' href='/css/jass.css' />
-    <link rel='stylesheet' href='/css/output.css' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Active Peak</title>
+    <link rel="stylesheet" href="../../public/css/output.css" />
   </head>
   <body>
     <header>
       <ul>
-        <li><a href='/'>Home</a></li>
-        <li><a href='/dashboard'>Dashboard</a></li>
-        {{#if loggedIn}}
-        <li><a href='/logout' id="logout">Logout</a></li>
+        {{#if isLoggedIn}}
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Workouts</a></li>
         {{else}}
-        <li><a href='/login'>Login</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/">Profile</a></li>
+          <li><a href="/">Workouts</a></li>
         {{/if}}
       </ul>
     </header>
 
-    <main>
-      {{{body}}}
-    </main>
-    <footer>
-      <p>&copy; 2024 Active Peak</p>
-    </footer>
+    <div class="container">
+      <div class="subtitle">Simple workouts to help you achieve your fitness
+        goals</div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </div>
   </body>
-  <script src='./js/logout.js'></script>
 </html>
