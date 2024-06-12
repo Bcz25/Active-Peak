@@ -33,7 +33,7 @@ router.get("/signup", async (req, res) => {
   }
 });
 
-//post route thate will create a new user and take me to my profile page
+//post route thate will create a new user and take me to my profile pages
 
 router.post("/signup", async (req, res) =>{
   try {
