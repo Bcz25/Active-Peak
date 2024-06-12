@@ -1,12 +1,11 @@
 const axios = require("axios");
 const router = require("express").Router();
 const { Users } = require("../models");
-// const withAuth = require('../../utils/authGuard');
+
 // get all users
 router.get("/", async (req, res) => {
   try {
-    const userData = await Users.findAll();
-    res.status(200).json(userData);
+    res.render("home");
   } catch (err) {
     res.status(500).json(err);
   }
