@@ -2,7 +2,6 @@
 const Exercise = require("./Exercise");
 const Routine = require("./Routine");
 const Users = require("./Users");
-const Template = require("./Template");
 
 // Exercise belongsTo Users
 Exercise.belongsTo(Users, {
@@ -34,4 +33,4 @@ Routine.hasMany(Exercise, {
   foreignKey: "Routine_id",
 });
 
-module.exports = { Exercise, Routine, Users, Template };
+module.exports = { Exercise, Routine, Users };

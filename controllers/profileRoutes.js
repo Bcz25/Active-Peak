@@ -1,7 +1,7 @@
 const axios = require("axios");
 const router = require("express").Router();
 const withAuth = require("../utils/authGuard");
-const { Routine, Exercise, Template } = require("../models");
+const { Routine, Exercise } = require("../models");
 
 // Get all routines
 router.get("/", withAuth, async (req, res) => {
