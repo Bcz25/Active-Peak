@@ -17,13 +17,6 @@ Exercise.init(
     equipment: {
       type: DataTypes.STRING,
     },
-    Template_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Template",
-        key: "id",
-      },
-    },
     Routine_id: {
       type: DataTypes.INTEGER,
       references: {
