@@ -1,6 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Routine extends Model {}
 
@@ -19,14 +18,23 @@ Routine.init(
     description: {
       type: DataTypes.TEXT,
     },
-   
+    muscle_group: {
+      type: DataTypes.STRING,
+    },
+    users_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Users",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
-    timestamps: false, 
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Routine',
+    modelName: "Routine",
   }
 );
 

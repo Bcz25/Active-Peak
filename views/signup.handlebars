@@ -1,0 +1,31 @@
+<!-- This is the sign up page. It contains a form that allows users to sign up. -->
+<div>
+  <h1>Sign Up</h1>
+  <form id="signup-form" action="/signup" method="post">
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      id="email-signup"
+      required
+    />
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      id="username-signup"
+      required
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      id="password-signup"
+      required
+    />
+    <input type="submit" value="Sign Up" />
+  </form>
+  <a href="/login">Sign In</a>
+</div>
+
+<script src="/public/js/signup.js"></script>

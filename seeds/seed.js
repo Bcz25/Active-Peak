@@ -1,6 +1,6 @@
 // Import the sequelize connection, the User model, and the Post model, and the data from the JSON files.
 const sequelize = require('../config/connection');
-const { Users, Exercise } = require('../models');
+const { Users } = require('../models');
 const userData = require('./userdata.json');
 const exerciseData = require('./exercisedata.json');
 // Define the function that will seed the database

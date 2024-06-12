@@ -1,0 +1,12 @@
+<section class="featured-workouts">
+  <h2>Featured Workouts</h2>
+  <ul>
+    {{#each workouts}}
+      <li>
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+        <a href="/workouts/{{id}}">View Workout</a>
+      </li>
+    {{/each}}
+  </ul>
+</section>

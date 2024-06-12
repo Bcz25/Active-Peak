@@ -1,30 +1,29 @@
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Active Peak - Fitness Management Platform</title>
-    <link rel='stylesheet' href='/css/jass.css' />
-    <link rel='stylesheet' href='/css/style.css' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Active Peak</title>
+    <link rel="stylesheet" href="/css/jass.css" />
+    <link rel="stylesheet" href="/css/output.css" />
   </head>
   <body>
     <header>
-      <ul>
-        <li><a href='/'>Home</a></li>
-        <li><a href='/dashboard'>Dashboard</a></li>
+      <nav>
         {{#if loggedIn}}
-        <li><a href='/logout' id="logout">Logout</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Profile</a></li>
         {{else}}
-        <li><a href='/login'>Login</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/login">Profile</a></li>
         {{/if}}
-      </ul>
+      </nav>
     </header>
 
     <main>
       {{{body}}}
     </main>
-    <footer>
-      <p>&copy; 2024 Active Peak</p>
-    </footer>
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   </body>
-  <script src='./js/logout.js'></script>
 </html>
