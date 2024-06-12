@@ -14,8 +14,12 @@ router.get("/", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const userData = await Users.create(req.body);
-    res.status(200).json(userData);
+    const userData = await Users.findOne({ where: { email: req.body.email } });
+    if (userData) {
+      res.redirect("/api/profile");
+    } else {
+      res.status(400).json({ message: "Incorrect email or password, please try again" });
+    }
   } catch (err) {
     res.status(400).json(err);
   }
@@ -29,14 +33,21 @@ router.get("/signup", async (req, res) => {
   }
 });
 
-router.post("/signup", async (req, res) => {
+//post route thate will create a new user and take me to my profile page
+
+router.post("/signup", async (req, res) =>{
   try {
     const userData = await Users.create(req.body);
-    res.status(200).json(userData);
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.redirect("/api/profile");
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
 
 // // Example route using Axios to fetch data from an external API
 // router.get('/example', async (req, res) => {
