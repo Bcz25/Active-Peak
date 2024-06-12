@@ -3,25 +3,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Active Peak</title>
-    <link rel="stylesheet" href="../../public/css/output.css" />
+    <link rel="stylesheet" href="/css/jass.css" />
+    <link rel="stylesheet" href="/css/output.css" />
   </head>
   <body>
     <header>
-      <ul>
+      <nav>
         {{#if loggedIn}}
           <li><a href="#">Home</a></li>
           <li><a href="#">Profile</a></li>
-          <li><a href="#">Workouts</a></li>
         {{else}}
           <li><a href="/">Home</a></li>
-          <li><a href="/">Profile</a></li>
-          <li><a href="/">Workouts</a></li>
+          <li><a href="/login">Profile</a></li>
         {{/if}}
-      </ul>
+      </nav>
     </header>
 
     <main>
       {{{body}}}
     </main>
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   </body>
 </html>
