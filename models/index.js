@@ -45,4 +45,3 @@ Routine.hasMany(Exercise, {
 });
 
 module.exports = { Exercise, Routine, Users, Template };
->>>>>>> 077726c1e35ccedb8a4dd07d1ab101d06b48cf51
