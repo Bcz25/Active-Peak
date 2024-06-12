@@ -2,7 +2,7 @@
 const Exercise = require('./Exercise');
 const Routine = require('./routine');
 const Users = require('./users');
-const WorkoutTemplate = require('./WorkoutTemplate');
+
 
 
 
@@ -13,4 +13,4 @@ WorkoutTemplate.hasMany(Exercise, { foreignKey: 'exercise_id' });
 Exercise.belongsToMany(Users, { through: MuscleGroupGoals, foreignKey: 'exercise_id' });
 Users.belongsToMany(Exercise, { through: MuscleGroupGoals, foreignKey: 'users_id' });
 
-module.exports = {Exercise, Routine, Users, WorkoutTemplate};
+module.exports = {Exercise, Routine, Users,};
