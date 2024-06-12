@@ -1,15 +1,8 @@
 // import models
-<<<<<<< HEAD
 const Exercise = require('./Exercise');
 const Routine = require('./routine');
 const Users = require('./users');
 
-=======
-const Exercise = require("./Exercise");
-const Routine = require("./Routine");
-const Users = require("./Users");
-const Template = require("./Template");
->>>>>>> 077726c1e35ccedb8a4dd07d1ab101d06b48cf51
 
 // Exercise belongsTo Users
 Exercise.belongsTo(Users, {
@@ -31,9 +24,9 @@ Users.hasMany(Routine, {
   foreignKey: "user_id",
 });
 
-<<<<<<< HEAD
+HEAD
 module.exports = {Exercise, Routine, Users,};
-=======
+
 // Routine belongsTo Users
 Routine.belongsTo(Users, {
   foreignKey: "user_id",
