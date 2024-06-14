@@ -11,12 +11,12 @@ Exercise.init(
     description: {
       type: DataTypes.TEXT,
     },
-    muscle_group: {
+    reps: {
       type: DataTypes.STRING,
     },
-    equipment: {
-      type: DataTypes.STRING,
-    },
+    // equipment: {
+    //   type: DataTypes.STRING,
+    // },
     Routine_id: {
       type: DataTypes.INTEGER,
       references: {
