@@ -1,16 +1,16 @@
-DROP DATABASE IF EXISTS exercise_db;
-CREATE DATABASE exercise_db;
+-- DROP DATABASE IF EXISTS exercise_db;
+-- CREATE DATABASE exercise_db;
 
-\c exercise_db;
+-- \c exercise_db;
 
-CREATE TABLE exercises (
-    id INTEGER NOT NULL,
-    exercise_name VARCHAR(30) NOT NULL,
-    exercise_description VARCHAR NOT NULL,
-    reps VARCHAR(30) NOT NULL
-);
+-- CREATE TABLE exercises (
+--     id INTEGER NOT NULL,
+--     exercise_name VARCHAR(30) NOT NULL,
+--     exercise_description VARCHAR NOT NULL,
+--     reps VARCHAR(30) NOT NULL
+-- );
 
-INSERT INTO exercise_db (id, exercise_name, exercise_description, reps)
+INSERT INTO Exercise TABLE (id, exercise_name, exercise_description, reps)
 VALUES (001, 'Assisted Bodyweight Squat', '', '10'),
        (002, 'Elevated or Knee Push-up', '', '10'),
        (003, 'Dumbell Rows', '', '10 per side'),
