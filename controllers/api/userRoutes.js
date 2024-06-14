@@ -36,7 +36,7 @@ router.post("/", async (req, res) =>{
 router.post("/login", async (req, res) => {
   try {
     // Find the user by their email
-    const user = await Users.findOne({ where: { email: req.body.email } });
+    const user = await Users.findByPk(req.session.user_id);
 
     // If the user was not found, send an error
     if (!user) {

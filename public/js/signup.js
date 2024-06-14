@@ -15,7 +15,7 @@ document.querySelector("#signup-form").addEventListener("submit", async (event) 
       console.log(users_name);
 
       if (response.ok) {
-        document.location.replace(`/profile/${users_name}`);
+        document.location.replace("/profile");
       } else {
         alert('Failed to sign up');
       }

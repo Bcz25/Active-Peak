@@ -7,7 +7,7 @@ router.get("/", withAuth, async (req, res) => {
   try {
     // Find the user by their username
     const user = await Users.findByPk(req.session.user_id,
-    // {include: [ Routine]}
+    {include: [ Routine]}
   );
   // include: [{ model: Exercise }] once we get the routines up and running
   // If the user was not found, send an error

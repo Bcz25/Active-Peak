@@ -14,7 +14,7 @@ const loginFormHandler = async (event) => {
     });
     // If the response is okay, redirect the user to the homepage
     if (response.ok) {
-      document.location.replace(`/profile/${users_name}`);
+      document.location.replace("/profile");
     } else {
       alert("Failed to log in");
     }
