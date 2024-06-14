@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Users } = require("../../models");
+const bcrypt = require("bcrypt");
 
 // get all users
 router.get("/", async (req, res) => {
@@ -35,8 +36,9 @@ router.post("/", async (req, res) =>{
 // Logs the user into their account
 router.post("/login", async (req, res) => {
   try {
-    // Find the user by their email
-    const user = await Users.findByPk(req.session.user_id);
+
+    // Find the user by their email address
+    const user  = await Users.findOne({ where: { email: req.body.email } });
 
     // If the user was not found, send an error
     if (!user) {
@@ -63,6 +65,7 @@ router.post("/login", async (req, res) => {
     });
  
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
