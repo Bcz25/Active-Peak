@@ -7,7 +7,7 @@ router.get("/", withAuth, async (req, res) => {
   try {
     // Find the user by their username
     const user = await Users.findByPk(req.session.user_id,
-    // {include: [ Routine]}
+    {include: [Routine]}
   );
   // include: [{ model: Exercise }] once we get the routines up and running
   // If the user was not found, send an error
@@ -18,9 +18,9 @@ router.get("/", withAuth, async (req, res) => {
     const userData = user.get({ plain: true });
     // Render the profile page with the user's data
     res.render('profile', { 
-      // userData,
-      // routines: userData.Routines,
-      // logged_in: req.session.logged_in
+      Users: userData,
+      routines: userData.Routines,
+      logged_in: req.session.logged_in
      });
   } catch (err) {
     res.status(500).json(err);
