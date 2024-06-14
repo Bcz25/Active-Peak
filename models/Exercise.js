@@ -10,9 +10,11 @@ Exercise.init(
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     reps: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     // equipment: {
     //   type: DataTypes.STRING,
