@@ -3,10 +3,17 @@
             <h2 class="text-2xl font-bold mb-2">Profile</h2>
             <p><strong>Name:</strong> {{user.users_name}}</p>
         </div>
-            {{#each routines}}
+
+        <div class="mt-10 bg-white rounded shadow p-6">
+            <h2 class="text-2xl font-bold mb-2">Routines</h2>
+            <a href="/api/routines" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Create New Routine
+        </a>
+            {{#each routines as |Routine|}}
             <div class="border-t pt-2">
-                <a href="/routines/{{routine.id}}">
-                <p><strong>Routine Name:</strong> {{routine.routine_name}}</p>
+                <a href="/routines/{{Routine.id}}">
+                <p><strong>Routine Name:</strong> {{Routine.Routine_name}}</p>
+                </a>
             </div>
             {{/each}}
             <!-- Modal toggle -->
