@@ -28,16 +28,30 @@ router.get("/:id", async (req, res) => {
 });
 
 // route using Axios to fetch data from an external API
-router.get('/routine', async (req, res) => {
+// route using Axios to fetch data from an external API
+router.get("/routine", async (__, res) => {
   try {
-    // Make GET request to external API
-    const response = await axios.get('https://api.example.com/data');
+    const options = {
+      method: "GET",
+      url: "https://exercisedb.p.rapidapi.com/exercises",
+      params: {
+      limit: "10",
+      offset: "0",
+      },
+      headers: {
+      "x-rapidapi-key": process.env.DB_API_KEY,
+      "x-rapidapi-host": "exercisedb.p.rapidapi.com",
+      },
+    };
+
+    const response = await axios.request(options);
+    console.log(response.data);
+
     // Send response data back to client
     res.json(response.data);
   } catch (error) {
-    // Handle error
-    console.error('Error fetching data:', error);
-    res.status(500).json({ error: 'Error fetching data' });
+    console.error(error);
+    res.status(500).json(error);
   }
 });
 
