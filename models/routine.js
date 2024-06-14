@@ -15,12 +15,6 @@ Routine.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.TEXT,
-    },
-    muscle_group: {
-      type: DataTypes.STRING,
-    },
     users_id: {
       type: DataTypes.INTEGER,
       references: {

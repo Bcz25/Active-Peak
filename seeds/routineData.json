@@ -1,0 +1,9 @@
+[
+    { "id": 1, "Routine_name": "Beginner Home Workout" },
+    { "id": 2, "Routine_name": "Intermediate Home Workout" },
+    { "id": 3, "Routine_name": "Advanced Home Workout" },
+    { "id": 4, "Routine_name": "Beginner Fat Burner" },
+    { "id": 5, "Routine_name": "Intermediate/Advanced Fat Burner" },
+    { "id": 6, "Routine_name": "Beginner Strength Training" },
+    { "id": 7, "Routine_name": "Intermediate Strength Training" }
+  ]
