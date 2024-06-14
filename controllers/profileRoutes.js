@@ -1,39 +1,25 @@
 const axios = require("axios");
 const router = require("express").Router();
 const withAuth = require("../utils/authGuard");
-const { Routine, Exercise } = require("../models");
+const { Users, Exercise } = require("../models");
 
-// Get all routines
-router.get("/", withAuth, async (req, res) => {
+// Get the profile page
+router.get("/:users_name", withAuth,async (req, res) => {
   try {
-    const routineData = await Routine.findAll({
-      include: [{ model: Template, include: { model: Exercise } }],
-      where: { user_id: req.session.user_id },
-    });
-
-    const routines = routineData.map((routine) => routine.get({ plain: true }));
-
-    res.status(200).json(routines);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Get a single routine
-router.get("/:id", withAuth, async (req, res) => {
-  try {
-    const routineData = await Routine.findByPk(req.params.id, {
-      include: [{ model: Template, include: { model: Exercise } }],
-    });
-
-    if (!routineData) {
-      res.status(404).json({ message: "No routine found with this id!" });
+    // Find the user by their username
+    const user = await Users.findOne({ where: { users_name: req.params.users_name } });
+      // include: [{ model: Exercise }] once we get the routines up and running
+    // If the user was not found, send an error
+    if (!user) {
+      res.status(404).json({ message: 'No user with that username found!' });
       return;
     }
 
-    const routine = routineData.get({ plain: true });
-
-    res.status(200).json(routine);
+    // Render the profile page with the user's data
+    res.render('profile', { 
+      user: user.get({ plain: true }),
+      logged_in: req.session.logged_in
+     });
   } catch (err) {
     res.status(500).json(err);
   }
