@@ -20,14 +20,10 @@ const Users = require("./Users");
 
 // Users have many Routine
 Users.hasMany(Routine, {
-  foreignKey: "user_id",
-  as: "routines",
 });
 
 
 Routine.belongsTo(Users, {
-  foreignKey: 'user_id',
-  as: 'user', // This is optional
 });
 
 // Routine belongsTo Users
@@ -37,7 +33,6 @@ Routine.belongsTo(Users, {
 
 // Routine have many Exercise
 Routine.hasMany(Exercise, {
-  foreignKey: "Routine_id",
 });
 
 module.exports = { Exercise, Routine, Users };
