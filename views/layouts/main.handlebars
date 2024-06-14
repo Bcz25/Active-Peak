@@ -24,34 +24,34 @@
       <img class="h-20 w-20 mx-auto" src="/images/ActivePeakNan.png" alt="Your Company">
       <h1 class="text-gray-300 ml-4">Active Peak</h1>
     </div>
-    <div class="flex justify-center items-center">
-  <div class="flex justify-center items-center flex-shrink-0 mx-10 mt-4 mb-0.65">
     {{#if logged_in}}
-    <form action="/logout" method="POST">
-      <button type="submit" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log Out</button>
-    </form>
-    {{/if}}
+    <div class="flex justify-center items-center">
+  <div class="flex justify-center items-center flex-shrink-0 mx-10">
+      <button id="logout" type="click" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log Out</button>
   </div>
 </div>
+    {{/if}}
     </div>
   </div>
       </div>
     </div>
   </div>
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
-    <div class="space-y-1 px-2 pb-3 pt-2">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-     <form action="/logout" method="POST">
-        <button type="submit" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log Out</button>
-      </form>
-    </div>
+<!-- Mobile menu, show/hide based on menu state. -->
+<div class="sm:hidden" id="mobile-menu">
+  <div class="space-y-1 px-2 pb-3 pt-2">
+    {{#if logged_in}}
+      <button id="mobile-logout" type="submit" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log Out</button>
+    {{/if}}
   </div>
+</div>
 </nav>
 <div>
     {{{body}}}
 </div>
   </main>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 </html>
