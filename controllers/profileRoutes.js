@@ -1,23 +1,26 @@
 const axios = require("axios");
 const router = require("express").Router();
 const withAuth = require("../utils/authGuard");
-const { Users, Exercise } = require("../models");
+const { Users, Routine } = require("../models");
 
 // Get the profile page
 router.get("/:users_name", withAuth,async (req, res) => {
   try {
     // Find the user by their username
-    const user = await Users.findOne({ where: { users_name: req.params.users_name } });
+    const user = await Users.findOne({ where: { users_name: req.params.users_name },
+    include: [{ model: Routine }]
+  });
       // include: [{ model: Exercise }] once we get the routines up and running
     // If the user was not found, send an error
     if (!user) {
       res.status(404).json({ message: 'No user with that username found!' });
       return;
     }
-
+    const userData = user.get({ plain: true });
     // Render the profile page with the user's data
     res.render('profile', { 
-      user: user.get({ plain: true }),
+      user: userData,
+      routines: userData.Routines,
       logged_in: req.session.logged_in
      });
   } catch (err) {
