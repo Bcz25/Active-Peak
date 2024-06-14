@@ -1,4 +1,4 @@
-const axios = require("axios");
+
 const router = require("express").Router();
 const { Exercise } = require("../../models");
 const withAuth = require("../../utils/authGuard");
