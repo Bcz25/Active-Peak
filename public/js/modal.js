@@ -27,11 +27,11 @@ let routineId = '';
 
 
 function showModal (modal){
-    modal.classList.remove('is-hidden');
+    modal.classList.remove('hidden');
 }
 
 function hideModal (modal){
-    modal.classList.add('is-hidden');
+    modal.classList.add('hidden');
 }
 
 modalButton.addEventListener('click', () => {
