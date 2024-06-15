@@ -1,38 +1,16 @@
-// import models
+// Import models.
 const Exercise = require("./Exercise");
 const Routine = require("./Routine");
 const Users = require("./Users");
 
-// Exercise belongsTo Users
-//Exercise.belongsTo(Users, {
-//  foreignKey: "user_id",
-//});
+// Users have many Routine.
+Users.hasMany(Routine, {});
 
-// Exercise belongsTo Routine
-//Exercise.belongsTo(Routine, {
-//  foreignKey: "Routine_id",
-//});
+// Routine belongs to Users.
+Routine.belongsTo(Users, {});
 
-// Users have many Exercise
-//Users.hasMany(Exercise, {
-//  foreignKey: "user_id",
-//});
+// Routine have many Exercise.
+Routine.hasMany(Exercise, {});
 
-// Users have many Routine
-Users.hasMany(Routine, {
-});
-
-
-Routine.belongsTo(Users, {
-});
-
-// Routine belongsTo Users
-//Routine.belongsTo(Users, {
-//  foreignKey: "user_id",
-//});
-
-// Routine have many Exercise
-Routine.hasMany(Exercise, {
-});
-
+// Export the models.
 module.exports = { Exercise, Routine, Users };

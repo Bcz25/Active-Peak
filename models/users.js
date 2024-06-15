@@ -1,9 +1,10 @@
+// These are the imported modules.
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
-
+// This is the Users class that extends the Model class.
 class Users extends Model{}
-
+// This is the Users model that is used to create the Users table.
 Users.init(
   {
     id: {
@@ -29,6 +30,7 @@ Users.init(
       },
     },
   },
+  // These are the hooks that will hash the password before creating or updating a user.
   {
     hooks: {
       beforeCreate: async (newUserData) => {
@@ -43,6 +45,7 @@ Users.init(
         return updatedUserData;
       },
     },
+    // These are the configuration options for the Users model.
     sequelize,
     timestamps: false,
     freezeTableName: true,
@@ -50,5 +53,5 @@ Users.init(
     modelName: "Users",
   }
 );
-
+// Export the Users model.
 module.exports = Users;

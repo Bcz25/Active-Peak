@@ -1,9 +1,9 @@
 // Import the sequelize connection, the User model, and the Post model, and the data from the JSON files.
-const sequelize = require('../config/connection');
-const { Exercise } = require('../models');
-const { Routine } = require('../models');
-const exerciseData = require('./excersiseData.json');
-const routineData = require('./routineData.json');
+const sequelize = require("../config/connection");
+const { Exercise } = require("../models");
+const { Routine } = require("../models");
+const exerciseData = require("./excersiseData.json");
+const routineData = require("./routineData.json");
 
 // Define the function that will seed the database
 const seedDatabase = async () => {
@@ -20,7 +20,6 @@ const seedDatabase = async () => {
   });
   // Exit the process when the data is inserted
   process.exit(0);
-}
-
+};
 // Call the function to seed the database
 seedDatabase();

@@ -1,3 +1,4 @@
+<!-- Main layout for the application -->
 <html lang="en" class="h-full bg-white">
   <head>
     <meta charset="UTF-8" />
@@ -10,6 +11,7 @@
   </head>
   <body class="h-full">
   <main>
+    <!-- Navigation bar -->
   <nav class="bg-gray-500">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
@@ -24,6 +26,7 @@
       <img class="h-20 w-20 mx-auto" src="/images/ActivePeakNan.png" alt="Your Company">
       <h1 class="text-gray-300 ml-4">Active Peak</h1>
     </div>
+    <!-- If the user is logged in, display the logout button. -->
     {{#if logged_in}}
     <div class="flex justify-center items-center">
   <div class="flex justify-center items-center flex-shrink-0 mx-10">
@@ -46,12 +49,15 @@
   </div>
 </div>
 </nav>
+<!-- Main content displayed through handlebars syntax. -->
 <div>
     {{{body}}}
 </div>
   </main>
+  <!-- If logged in, use the logout script. -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>
