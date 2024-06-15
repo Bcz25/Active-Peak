@@ -2,7 +2,8 @@
 
 module.exports = {
   content: ["./public/**/*.{html,js,hbs,handlebars}",
-    "./src/**/*.{html,js,hbs,handlebars}"
+    "./src/**/*.{html,js,hbs,handlebars}",
+    "./node_modules/flowbite/**/*.js",
   ], // Include .hbs files for Handlebars
   theme: {
     extend: {},
