@@ -1,8 +1,9 @@
+// These variables are used to import the necessary modules.
 const router = require("express").Router();
 const { Users } = require("../../models");
 const bcrypt = require("bcrypt");
 
-// get all users
+// Route to get all users.
 router.get("/", async (req, res) => {
   try {
     const userData = await Users.findAll();
@@ -12,14 +13,14 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Creates a new user account
+// Route to create a new user.
 router.post("/", async (req, res) =>{
   console.log(req.body);
   try {
     const newUser = await Users.create({
       email: req.body.email,
       users_name: req.body.users_name,
-      password: req.body.password, // This will be hashed by the beforeCreate hook
+      password: req.body.password,
     });
 
     req.session.save(() => {
@@ -33,29 +34,29 @@ router.post("/", async (req, res) =>{
   }
 });
 
-// Logs the user into their account
+// Route to log the user into their account.
 router.post("/login", async (req, res) => {
   try {
 
-    // Find the user by their email address
+    // Find the user by their email address.
     const user  = await Users.findOne({ where: { email: req.body.email } });
 
-    // If the user was not found, send an error
+    // If the user was not found, send an error.
     if (!user) {
       res.status(400).json({ message: 'No user with that email address!' });
       return;
     }
 
-    // Check if the entered password matches the stored password
+    // Check if the entered password matches the stored password.
     const validPassword = await bcrypt.compare(req.body.password, user.password);
 
-    // If the password was invalid, send an error
+    // If the password was invalid, send an error.
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
 
-    // If the password was valid, log the user in
+    // If the password was valid, log the user in.
     req.session.save(() => {
       req.session.user_id = user.id;
       req.session.users_name = user.users_name;
@@ -69,7 +70,7 @@ router.post("/login", async (req, res) => {
     res.status(500).json(err);
   }
 });
-// Logs user out of account
+// Logs user out of account.
 router.post("/logout", async (req, res) => { 
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -79,5 +80,5 @@ router.post("/logout", async (req, res) => {
     res.status(404).end();
   }
 });
-
+// Export the router.
 module.exports = router;

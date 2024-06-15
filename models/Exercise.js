@@ -1,7 +1,9 @@
+// These are the imported modules.
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+// This is the Exercise class that extends the Model class.
 class Exercise extends Model {}
-
+// This is the Exercise model that is used to create the Exercise table.
 Exercise.init(
   {
     Exercise_name: {
@@ -15,9 +17,7 @@ Exercise.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // equipment: {
-    //   type: DataTypes.STRING,
-    // },
+    // This is the foreign key that links the Exercise table with the Routine table.
     Routine_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -25,6 +25,7 @@ Exercise.init(
         key: "id",
       },
     },
+    // This is the foreign key that links the Exercise table with the Users table.
     users_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -33,6 +34,7 @@ Exercise.init(
       },
     },
   },
+  // These are the configuration options for the Exercise model.
   {
     sequelize,
     timestamps: true,
@@ -41,5 +43,5 @@ Exercise.init(
     modelName: "Exercise",
   }
 );
-
+// Export the Exercise model.
 module.exports = Exercise;

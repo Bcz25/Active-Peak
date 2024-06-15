@@ -8,7 +8,8 @@
     "start": "node server.js",
     "seed": "node seeds/seed.js",
     "dev": "nodemon server.js",
-    "build:css": "postcss public/css/style.css -o public/css/output.css"
+    "build:css": "postcss public/css/style.css -o public/css/output.css",
+    "build": "uglifyjs flowbite.js -o flowbite.min.js"
   },
   "keywords": [],
   "author": "",
