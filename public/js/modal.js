@@ -3,8 +3,9 @@ const homeOrGym = document.querySelector('#home-or-gym');
 
 const homeIntensity = document.querySelector('#home-intensity');
 const gymStyle = document.querySelector('#gym-style');
-const strength = document.querySelector('#strength');
-const hiit = document.querySelector('#hiit');
+
+const strengthModal = document.querySelector('#strength');
+const hiitModal = document.querySelector('#hiit');
 
 const homeRoutines = document.querySelector('#home-routines');
 const gymRoutines = document.querySelector('#gym-routines');
@@ -16,6 +17,7 @@ const homeAdvanced = document.querySelector('#home-advanced');
 const gymStrength = document.querySelector('#gym-strength');
 const gymHiit = document.querySelector('#gym-hiit');
 
+
 const strengthBeginner = document.querySelector('#strength-beginner');
 const strengthIntermediate = document.querySelector('#strength-intermediate');
 
@@ -25,7 +27,11 @@ let routineId = '';
 
 
 function showModal (modal){
-    modal.classList.add('is-active');
+    modal.classList.remove('is-hidden');
+}
+
+function hideModal (modal){
+    modal.classList.add('is-hidden');
 }
 
 modalButton.addEventListener('click', () => {
@@ -34,12 +40,11 @@ modalButton.addEventListener('click', () => {
 
 homeOrGym.addEventListener('click', () => {
     if (homeRoutines.checked){
-        homeIntensity.classList.add('is-active');
-        homeOrGym.classList.remove('is-active');
+        showModal(homeIntensity)
     } else if (gymRoutines.checked){
-        gymStyle.classList.add('is-active');
-        homeOrGym.classList.remove('is-active');
+        showModal(gymStyle);
     }
+    hideModal(homeOrGym);
     return;
 });
 
@@ -52,9 +57,41 @@ homeIntensity.addEventListener('click', () => {
         routineId = '3';
     }
     if (routineId){
-        document.location.replace(`/api/routine/${routineId}`);
+        document.location.replace(`/api/routines/${routineId}`);
     }
     return;
 });
 
+gymStyle.addEventListener('click', () => {
+    if (gymStrength.checked){
+        showModal(strengthModal);
+    } else if (gymHiit.checked){
+        showModal(hiitModal);
+    }
+    hideModal(gymStyle);
+    return;
+});
 
+hiitModal.addEventListener('click', () => {
+    if (hiitBeginner.checked){
+        routineId = '4';
+    } else if (hiitIntermediate.checked){
+        routineId = '5';
+    }
+    if (routineId){
+        document.location.replace(`/api/routines/${routineId}`);
+    }
+    return;
+});
+
+strengthModal.addEventListener('click', () => {
+    if (strengthBeginner.checked){
+        routineId = '6';
+    } else if (strengthIntermediate.checked){
+        routineId = '7';
+    }
+    if (routineId){
+        document.location.replace(`/api/routines/${routineId}`);
+    }
+    return;
+});
