@@ -1,22 +1,23 @@
+// These variables are used to import the necessary modules.
 const router = require("express").Router();
 const withAuth = require("../utils/authGuard");
 const { Users, Routine } = require("../models");
 
-// Get the profile page
+// Get the profile page.
 router.get("/", withAuth, async (req, res) => {
   try {
-    // Find the user by their username
+    // Find the user by their username.
     const user = await Users.findByPk(req.session.user_id,
     {include: [Routine]}
   );
-  // include: [{ model: Exercise }] once we get the routines up and running
-  // If the user was not found, send an error
+  // If the user was not found, send an error.
   if (!user) {
     res.status(404).json({ message: 'No user with that username found!' });
     return;
     }
+    // Serialize the user data so the template can read it.
     const userData = user.get({ plain: true });
-    // Render the profile page with the user's data
+    // Render the profile page, passing in the user data and whether the user is logged in.
     res.render('profile', { 
       Users: userData,
       routines: userData.Routines,
@@ -26,5 +27,5 @@ router.get("/", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// Export the router.
 module.exports = router;
