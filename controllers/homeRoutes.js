@@ -1,3 +1,4 @@
+// These variables are used to import the necessary modules.
 const router = require("express").Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");

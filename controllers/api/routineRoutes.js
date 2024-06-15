@@ -1,9 +1,10 @@
+// These variables are used to import the necessary modules.
 const axios = require("axios");
 const router = require("express").Router();
 const { Routine } = require("../../models");
 const withAuth = require("../../utils/authGuard");
 
-// get all routines
+// Route to get all routines.
 router.get("/", async (req, res) => {
   try {
     const routineData = await Routine.findAll();
@@ -13,7 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get a single routine
+// Route to get a single routine.
 router.get("/:id", async (req, res) => {
   try {
     const routineData = await Routine.findByPk(req.params.id);
@@ -27,8 +28,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// route using Axios to fetch data from an external API
-// route using Axios to fetch data from an external API
+// Route using axios to fetch exercise data from external API.
 router.get("/routine", async (__, res) => {
   try {
     const options = {
@@ -47,12 +47,12 @@ router.get("/routine", async (__, res) => {
     const response = await axios.request(options);
     console.log(response.data);
 
-    // Send response data back to client
+    // Send response data back to client.
     res.json(response.data);
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
   }
 });
-
+// Export the router.
 module.exports = router;
