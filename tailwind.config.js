@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{html,js,hbs,handlebars}"], // Include .hbs files for Handlebars
+  content: ["./public/**/*.{html,js,hbs,handlebars}",
+    "./src/**/*.{html,js,hbs,handlebars}"
+  ], // Include .hbs files for Handlebars
   theme: {
     extend: {},
   },
