@@ -3,6 +3,9 @@ const choiceBtn = document.querySelectorAll(".choice-btn");
 const nextBtn = document.querySelector("#next-btn");
 const getRoutineBtn = document.querySelector("#get-routine-btn");
 const styleNextBtn = document.querySelector("#style-next-btn");
+const getHomeRoutine = document.querySelector("#get-home-routine");
+const getHiitRoutine = document.querySelector("#get-hiit-routine");
+const getStrengthRoutine = document.querySelector("#get-strength-routine");
 
 const homeOrGym = document.querySelector("#home-or-gym");
 const homeIntensity = document.querySelector("#home-intensity");
@@ -88,25 +91,41 @@ styleNextBtn.addEventListener("click", () => {
 });
 
 // Add event listener to the next button to route to the selected routine
-getRoutineBtn.addEventListener("click", () => {
+getHomeRoutine.addEventListener("click", () => {
     if (selectedRoutineType === 'home-beginner') {
       routineId = "1";
     } else if (selectedRoutineType === 'home-intermediate') {
       routineId = "2";
     } else if (selectedRoutineType === 'home-advanced') {
       routineId = "3";
-    } else if (selectedRoutineType === 'hiit-beginner') {
-      routineId = "4";
-    } else if (selectedRoutineType === 'hiit-intermediate') {
-      routineId = "5";
-    } else if (selectedRoutineType === 'strength-beginner') {
-      routineId = "6";
-    } else if (selectedRoutineType === 'strength-intermediate') {
-      routineId = "7";
     }
-    console.log('routine Id:', routineId);
     if (routineId) {
       document.location.replace(`/api/routines/${routineId}`);
     }
     return;
+});
+
+
+getHiitRoutine.addEventListener("click", () => {
+  if (selectedRoutineType === 'hiit-beginner') {
+    routineId = "4";
+  } else if (selectedRoutineType === 'hiit-intermediate') {
+    routineId = "5";
+  }
+  if (routineId) {
+    document.location.replace(`/api/routines/${routineId}`);
+  }
+  return;
+});
+
+getStrengthRoutine.addEventListener("click", () => {
+  if (selectedRoutineType === 'strength-beginner') {
+    routineId = "6";
+  } else if (selectedRoutineType === 'strength-intermediate') {
+    routineId = "7";
+  }
+  if (routineId) {
+    document.location.replace(`/api/routines/${routineId}`);
+  }
+  return;
 });
