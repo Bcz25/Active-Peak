@@ -1,5 +1,5 @@
 <!-- This is the profiles display page. It contains the user's profile information and a list of their routines. -->
-<div class="container mx-auto">
+<div class="container mx-auto mt-8">
   <div class="bg-white rounded shadow p-6">
     <h2 class="text-2xl font-bold mb-2">Profile</h2>
     <p><strong>Name:</strong> {{Users.users_name}}</p>
@@ -19,10 +19,9 @@
       </button>
       <a href="/profile/routine"
         class="block text-white bg-red-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
-        style="text-decoration: none;"
-    >
+        style="text-decoration: none; width: 166.58px; height: 40px;">
         Go to Routine Page
-    </a>
+      </a>
     </div>
   </div>
   <!-- This is the list of routines that displays after going through the Modal to select a prefered workout routine. -->
@@ -39,7 +38,6 @@
       <p>No Routine Template Preferences Saved.</p>
     {{/if}}
   </div>
-</div>
 <!-- Modal for selecting a workout routine -->
 <div id="home-or-gym" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
   <div class="relative max-h-full w-full max-w-md p-4">
