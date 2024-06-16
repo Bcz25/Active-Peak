@@ -1,7 +1,7 @@
 // Import models.
 const Exercise = require("./Exercise");
-const Routine = require("./Routine");
-const Users = require("./Users");
+const Routine = require("./routine");
+const Users = require("./users");
 
 // Users have many Routine.
 Users.hasMany(Routine, {});
