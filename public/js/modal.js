@@ -1,9 +1,13 @@
 const newRoutine = document.querySelector("#select-modal");
 const choiceBtn = document.querySelectorAll(".choice-btn");
 const nextBtn = document.querySelector("#next-btn");
+const getRoutineBtn = document.querySelector("#get-routine-btn");
+const styleNextBtn = document.querySelector("#style-next-btn");
+const getHomeRoutine = document.querySelector("#get-home-routine");
+const getHiitRoutine = document.querySelector("#get-hiit-routine");
+const getStrengthRoutine = document.querySelector("#get-strength-routine");
 
 const homeOrGym = document.querySelector("#home-or-gym");
-
 const homeIntensity = document.querySelector("#home-intensity");
 const gymStyle = document.querySelector("#gym-style");
 
@@ -56,55 +60,72 @@ choiceBtn.forEach(button => {
   
   // Handle the value of the selected button as needed
   const routineType = this.getAttribute('data-value');
+  
+  selectedRoutineType = routineType;
   console.log('routine Type:', selectedRoutineType);
   // You can now use selectedValue for further logic
-  selectedRoutineType = routineType;
 });
 }); 
 
-
-// Add event listener to the next button to show the next modal (homeworkout routines or more options for gym workouts)
+// Add event listener to the next button to show the next modal
 nextBtn.addEventListener("click", () => {
   if (selectedRoutineType === 'home') {
     showModal(homeIntensity);
+    hideModal(homeOrGym);
   } else if (selectedRoutineType === 'gym') {
     showModal(gymStyle);
+    hideModal(homeOrGym);
   }
-  hideModal(homeOrGym);
+  return;
 });
 
-// Add event listener to the next button to show the next modal (strength routines or hiit routines)
-nextBtn.addEventListener("click", () => {
+styleNextBtn.addEventListener("click", () => {
   if (selectedRoutineType === 'gym-strength') {
-    showModal(strengthModal);
-    hideModal(gymStyle);
+   showModal(strengthModal);
+   hideModal(gymStyle);
   } else if (selectedRoutineType === 'gym-hiit') {
-    showModal(hiitModal);
-    hideModal(gymStyle);
+   showModal(hiitModal);
+   hideModal(gymStyle);
   }
   return;
 });
 
 // Add event listener to the next button to route to the selected routine
-nextBtn.addEventListener("click", () => {
-
+getHomeRoutine.addEventListener("click", () => {
     if (selectedRoutineType === 'home-beginner') {
       routineId = "1";
     } else if (selectedRoutineType === 'home-intermediate') {
       routineId = "2";
     } else if (selectedRoutineType === 'home-advanced') {
       routineId = "3";
-    } else if (selectedRoutineType === 'hiit-beginner') {
-      routineId = "4";
-    } else if (selectedRoutineType === 'hiit-intermediate') {
-      routineId = "5";
-    } else if (selectedRoutineType === 'strength-beginner') {
-      routineId = "6";
-    } else if (selectedRoutineType === 'strength-intermediate') {
-      routineId = "7";
     }
     if (routineId) {
       document.location.replace(`/api/routines/${routineId}`);
     }
     return;
+});
+
+
+getHiitRoutine.addEventListener("click", () => {
+  if (selectedRoutineType === 'hiit-beginner') {
+    routineId = "4";
+  } else if (selectedRoutineType === 'hiit-intermediate') {
+    routineId = "5";
+  }
+  if (routineId) {
+    document.location.replace(`/api/routines/${routineId}`);
+  }
+  return;
+});
+
+getStrengthRoutine.addEventListener("click", () => {
+  if (selectedRoutineType === 'strength-beginner') {
+    routineId = "6";
+  } else if (selectedRoutineType === 'strength-intermediate') {
+    routineId = "7";
+  }
+  if (routineId) {
+    document.location.replace(`/api/routines/${routineId}`);
+  }
+  return;
 });

@@ -1,7 +1,7 @@
 // These variables are used to import the necessary modules.
 const axios = require("axios");
 const router = require("express").Router();
-const { Routine } = require("../../models");
+const { Routine, Exercise } = require("../../models");
 const withAuth = require("../../utils/authGuard");
 
 // Route to get all routines.
@@ -15,13 +15,21 @@ router.get("/", async (req, res) => {
 });
 
 // Route to get a single routine.
-router.get("/:id", async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
-    const routineData = await Routine.findByPk(req.params.id);
-    if (!routineData) {
+    const routine = await Routine.findByPk(req.params.id,
+      {include: [Exercise]}
+    );
+    if (!routine) {
       res.status(404).json({ message: "No routine found with this id!" });
       return;
     }
+    const routineData = routine.get({ plain: true });
+    res.render("routine", {
+      routineData,
+      exersises: routineData.Exercises,
+      logged_in: req.session.logged_in,
+    });
     res.status(200).json(routineData);
   } catch (err) {
     res.status(500).json(err);
