@@ -12,10 +12,11 @@
     </div>
     <div id="card-container" class="grid grid-cols-2 gap-4">
       <!-- Cards will be dynamically generated here -->
-      {{#each routines as |Routine|}}
+      {{#each exercises as |Exercise|}}
         <div class="bg-gray-100 p-4 rounded shadow">
-          <h3 class="text-xl font-semibold">{{Routine.Exercise_name}}</h3>
-          <p>Reps: {{Routine.reps}}</p>
+          <h3 class="text-xl font-semibold">{{Excercise.Exercise_name}}</h3>
+          <p>Sets: {{Excercise.sets}}</p>
+          <p>Reps: {{Excercise.reps}}</p>
         </div>
       {{/each}}
     </div>

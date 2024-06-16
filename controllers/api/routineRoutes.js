@@ -4,16 +4,6 @@ const router = require("express").Router();
 const { Routine, Exercise } = require("../../models");
 const withAuth = require("../../utils/authGuard");
 
-// Route to get all routines.
-router.get("/", async (req, res) => {
-  try {
-    const routineData = await Routine.findAll();
-    res.status(200).json(routineData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Route to get a single routine.
 router.get("/:id", withAuth, async (req, res) => {
   try {
