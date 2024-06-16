@@ -16,5 +16,3 @@ const logout = async (event) => {
 
 // Add an event listener to the logout button, and call the logout function when the button is clicked.
 document.querySelector("#logout").addEventListener("click", logout);
-// Add an event listener to the mobile logout form, and call the logout function when the form is submitted.
-document.querySelector("#mobile-logout").addEventListener("submit", logout);
