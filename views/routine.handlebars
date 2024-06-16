@@ -2,7 +2,7 @@
 <!-- API calls by name when clicking on exercise card, return GIF and instructions-->
 <div class="container mx-auto">
   <div class="bg-white rounded shadow p-6">
-    <h2 class="text-2xl font-bold mb-2">Routine Templates</h2>
+    <h2 class="text-2xl font-bold mb-2">{{Routine.Routine_name}}</h2>
     <button
       id="show-templates"
       class="inline-flex justify-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
@@ -11,10 +11,11 @@
     </button>
     <div id="card-container" class="grid grid-cols-2 gap-4">
       <!-- Cards will be dynamically generated here -->
-      {{#each routines as |Routine|}}
+      {{#each exercises as |Exercise|}}
         <div class="bg-gray-100 p-4 rounded shadow">
-          <h3 class="text-xl font-semibold">{{Routine.Exercise_name}}</h3>
-          <p>Reps: {{Routine.reps}}</p>
+          <h3 class="text-xl font-semibold">{{Excercise.Exercise_name}}</h3>
+          <p>Sets: {{Excercise.sets}}</p>
+          <p>Reps: {{Excercise.reps}}</p>
         </div>
       {{/each}}
     </div>
