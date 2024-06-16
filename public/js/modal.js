@@ -3,6 +3,8 @@ const choiceBtn = document.querySelectorAll(".choice-btn");
 const nextBtn = document.querySelector("#next-btn");
 const getRoutineBtn = document.querySelector("#get-routine-btn");
 const styleNextBtn = document.querySelector("#style-next-btn");
+const closeModalBtn = document.querySelectorAll(".close-modal");
+
 const getHomeRoutine = document.querySelector("#get-home-routine");
 const getHiitRoutine = document.querySelector("#get-hiit-routine");
 const getStrengthRoutine = document.querySelector("#get-strength-routine");
@@ -44,6 +46,18 @@ function hideModal(modal) {
 // Add event listener to the create routine button to show the first modal
 newRoutine.addEventListener("click", () => {
     showModal(homeOrGym);
+});
+
+
+// Add event listener to the close button to hide the modal
+closeModalBtn.forEach(button => {
+  button.addEventListener('click', function() {
+    hideModal(homeOrGym);
+    hideModal(homeIntensity);
+    hideModal(gymStyle);
+    hideModal(strengthModal);
+    hideModal(hiitModal);
+  });
 });
 
 // Add event listener to each choice button insode the modals
