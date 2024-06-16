@@ -2,8 +2,7 @@
 // This is the tailwind configuration file that is used to compile the CSS files.
 module.exports = {
   // These content file paths are used to compile the CSS files.
-  content: ["./public/**/*.{html,js,hbs,handlebars}",
-    "./src/**/*.{html,js,hbs,handlebars}",
+  content: ["./public/**/*.{html,js,hbs,handlebars}", "./views/**/*.hbs",
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {

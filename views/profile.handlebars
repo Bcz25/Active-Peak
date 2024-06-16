@@ -2,68 +2,59 @@
 <div class="container mx-auto">
   <div class="bg-white rounded shadow p-6">
     <h2 class="text-2xl font-bold mb-2">Profile</h2>
-    <p><strong>Name:</strong> {{this.Users.users_name}}</p>
+    <p><strong>Name:</strong> {{Users.users_name}}</p>
   </div>
-  <!-- This is the list of routines that displays after going through the Modal to select a prefered workout routine. -->
-  {{#each routines as |Routine|}}
-    <div class="border-t pt-2">
-      <a href="/routines/{{Routine.id}}">
-        <p><strong>Routine Name:</strong> {{Routine.Routine_name}}</p>
-      </a>
-    </div>
-  {{/each}}
   <!-- Modal toggle button for creating a routine -->
   <div class="mt-10 bg-white rounded shadow p-6">
     <h2 class="text-2xl font-bold mb-2">Routines</h2>
-    <button
-      id="select-modal"
-      type="button"
-      data-modal-target="select-modal"
-      data-modal-toggle="select-modal"
-      class="block text-white bg-red-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+    <div class="flex justify-between">
+      <button
+        id="select-modal"
+        type="button"
+        data-modal-target="select-modal"
+        data-modal-toggle="select-modal"
+        class="block text-white bg-red-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+      >
+        Create New Routine
+      </button>
+      <a href="/profile/routine"
+        class="block text-white bg-red-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+        style="text-decoration: none;"
     >
-      Create New Routine
-    </button>
+        Go to Routine Page
+    </a>
+    </div>
   </div>
-  <!-- WHere will you train? -->
-  <div
-    id="home-or-gym"
-    tabindex="-1"
-    aria-hidden="true"
-    class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0"
-  >
-    <div class="relative max-h-full w-full max-w-md p-4">
-      <!-- Modal content -->
-      <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
-        <!-- Modal header -->
-        <div
-          class="flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600"
-        >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Where
-            will you be training?</h3>
-          <button
-            type="button"
-            class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
-            data-modal-toggle="select-modal"
-          >
-            <svg
-              class="h-3 w-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-              />
-            </svg>
-            <span class="sr-only">Close modal</span>
-          </button>
+  <!-- This is the list of routines that displays after going through the Modal to select a prefered workout routine. -->
+  <div class="bg-white rounded shadow p-6">
+    {{#if routines.length}}
+      {{#each routines as |Routine|}}
+        <div class="border-t pt-2">
+          <a href="/routines/{{Routine.id}}">
+            <p><strong>Routine Name:</strong> {{Routine.Routine_name}}</p>
+          </a>
         </div>
+      {{/each}}
+    {{else}}
+      <p>No Routine Template Preferences Saved.</p>
+    {{/if}}
+  </div>
+</div>
+<!-- Modal for selecting a workout routine -->
+<div id="home-or-gym" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
+  <div class="relative max-h-full w-full max-w-md p-4">
+    <!-- Modal content -->
+    <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div class="flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600">
+        <h3 class="text-lg font-semibold text-gray-900">Where will you be training?</h3>
+        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="select-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+      </div>
         <!-- Modal body -->
         <div class="p-4 md:p-5">
           <ul class="mb-4 space-y-4">
@@ -74,25 +65,55 @@
                   <div class="w-full text-gray-500 dark:text-gray-400">Beginner
                     to Advanced routines with little to no equipment required</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
             <li>
               <button id="gym-routines" class="choice-btn" data-value="gym">
                 <div class="block">
                   <div class="w-full text-lg text-black font-semibold">At a Gym</div>
-                  <div class="w-full text-gray-500 dark:text-gray-400">Beginner to Intermediate routines for strength training or HIIT. Basic gym equipment required</div>
+                  <div class="w-full text-gray-500 dark:text-gray-400">Beginner
+                    to Intermediate routines for strength training or HIIT.
+                    Basic gym equipment required</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
           </ul>
-          <button
-            class="inline-flex w-full justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="next-btn">Next step</button>
+           <button
+    class="inline-flex w-full justify-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+    id="next-btn"
+  >
+    Next Step
+  </button>
         </div>
       </div>
     </div>
@@ -111,7 +132,7 @@
         <div
           class="flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">What
+          <h3 class="text-lg font-semibold text-gray-900 ">What
             is your experience level?</h3>
           <button
             type="button"
@@ -140,44 +161,101 @@
         <div class="p-4 md:p-5">
           <ul class="mb-4 space-y-4">
             <li>
-              <button id="home-beginner" class="choice-btn" data-value="home-beginner">
+              <button
+                id="home-beginner"
+                class="choice-btn"
+                data-value="home-beginner"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Beginner</div>
+                  <div
+                    class="w-full text-lg text-black font-semibold"
+                  >Beginner</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">maybe add
                     a note about the routine</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
             <li>
-              <button id="home-intermediate" class="choice-btn" data-value="home-intermediate">
+              <button
+                id="home-intermediate"
+                class="choice-btn"
+                data-value="home-intermediate"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Intermediate</div>
+                  <div
+                    class="w-full text-lg text-black font-semibold"
+                  >Intermediate</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">maybe add
                     a note about the routine</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
             <li>
-              <button id="home-advanced" class="choice-btn" data-value="home-advanced">
+              <button
+                id="home-advanced"
+                class="choice-btn"
+                data-value="home-advanced"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Advanced</div>
+                  <div
+                    class="w-full text-lg text-black font-semibold"
+                  >Advanced</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">maybe add
                     a note about the routine</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
           </ul>
           <button
-            class="inline-flex w-full justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit" id="get-home-routine">Lets Go!</button>
+    class="inline-flex w-full justify-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+            type="submit"
+            id="get-home-routine"
+          >Lets Go!</button>
         </div>
       </div>
     </div>
@@ -196,7 +274,7 @@
         <div
           class="flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">What
+          <h3 class="text-lg font-semibold text-gray-900">What
             style of training do you prefer?</h3>
           <button
             type="button"
@@ -224,18 +302,35 @@
         <!-- Modal body -->
         <div class="p-4 md:p-5">
           <ul class="mb-4 space-y-4">
-                        <li>
-              <button id="gym-strength" class="choice-btn" data-value="gym-strength">
+            <li>
+              <button
+                id="gym-strength"
+                class="choice-btn"
+                data-value="gym-strength"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Strength Training</div>
+                  <div class="w-full text-lg text-black font-semibold">Strength
+                    Training</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">
                     Powerlifting style training, heavy weight, low reps, Builds
                     foundation for later more intese phases of strength
                     training.</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
             <li>
@@ -246,14 +341,30 @@
                   <div class="w-full text-gray-500 dark:text-gray-400">Circuit
                     style training, burns fat, builds endurance.</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
           </ul>
-          <button
-            class="inline-flex w-full justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="style-next-btn">Next step</button>
+           <button
+    class="inline-flex w-full justify-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+    id="style-next-btn"
+  >
+    Next Step
+  </button>
         </div>
       </div>
     </div>
@@ -272,7 +383,7 @@
         <div
           class="flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">What
+          <h3 class="text-lg font-semibold text-gray-900">What
             is your desired dificulty level?</h3>
           <button
             type="button"
@@ -301,32 +412,70 @@
         <div class="p-4 md:p-5">
           <ul class="mb-4 space-y-4">
             <li>
-              <button id="strength-beginner" class="choice-btn" data-value="strength-beginner">
+              <button
+                id="strength-beginner"
+                class="choice-btn"
+                data-value="strength-beginner"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Beginner</div>
+                  <div
+                    class="w-full text-lg text-black font-semibold"
+                  >Beginner</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">
                     30-45 minute workouts, 3 days a week</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
             <li>
-              <button id="strength-intermediate" class="choice-btn" data-value="strength-intermediate">
+              <button
+                id="strength-intermediate"
+                class="choice-btn"
+                data-value="strength-intermediate"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Intermediate</div>
+                  <div
+                    class="w-full text-lg text-black font-semibold"
+                  >Intermediate</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">60-75
                     minute workouts, 4-5 days a week</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
           </ul>
           <button
-            class="inline-flex w-full justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="get-strength-routine">Lets Go!</button>
+    class="inline-flex w-full justify-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+            id="get-strength-routine"
+          >Lets Go!</button>
         </div>
       </div>
     </div>
@@ -345,7 +494,7 @@
         <div
           class="flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">What
+          <h3 class="text-lg font-semibold text-gray-900">What
             is your desired dificulty level?</h3>
           <button
             type="button"
@@ -374,32 +523,70 @@
         <div class="p-4 md:p-5">
           <ul class="mb-4 space-y-4">
             <li>
-              <button id="hiit-beginner" class="choice-btn" data-value="hiit-beginner">
+              <button
+                id="hiit-beginner"
+                class="choice-btn"
+                data-value="hiit-beginner"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Beginner</div>
+                  <div
+                    class="w-full text-lg text-black font-semibold"
+                  >Beginner</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">
                     30-45 minute workouts, 3 days a week</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
             <li>
-              <button id="hiit-intermediate" class="choice-btn" data-value="hiit-intermediate">
+              <button
+                id="hiit-intermediate"
+                class="choice-btn"
+                data-value="hiit-intermediate"
+              >
                 <div class="block">
-                  <div class="w-full text-lg text-black font-semibold">Intermediate</div>
+                  <div
+                    class="w-full text-lg text-black font-semibold"
+                  >Intermediate</div>
                   <div class="w-full text-gray-500 dark:text-gray-400">60-75
                     minute workouts, 4-5 days a week</div>
                 </div>
-                <svg class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-                  </svg>
+                <svg
+                  class="ms-3 h-4 w-4 text-gray-500 rtl:rotate-180 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  ></path>
+                </svg>
               </button>
             </li>
           </ul>
           <button
-            class="inline-flex w-full justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="get-hiit-routine">Lets Go!</button>
+    class="inline-flex w-full justify-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+            id="get-hiit-routine"
+          >Lets Go!</button>
         </div>
       </div>
     </div>

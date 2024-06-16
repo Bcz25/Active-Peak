@@ -17,9 +17,9 @@ router.get("/", async (req, res) => {
 // Route to get a single routine.
 router.get("/:id", withAuth, async (req, res) => {
   try {
-    const routine = await Routine.findByPk(req.params.id,
-      {include: [Exercise]}
-    );
+    const routine = await Routine.findByPk(req.params.id, {
+      include: [Exercise],
+    });
     if (!routine) {
       res.status(404).json({ message: "No routine found with this id!" });
       return;
@@ -37,26 +37,19 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 // Route using axios to fetch exercise data from external API.
-router.get("/routine", async (__, res) => {
+router.get("/routine", async (req, res) => {
   try {
+    // Set the options for the axios request.
     const options = {
       method: "GET",
-      url: "https://exercisedb.p.rapidapi.com/exercises",
-      params: {
-      limit: "10",
-      offset: "0",
-      },
-      headers: {
-      "x-rapidapi-key": process.env.DB_API_KEY,
-      "x-rapidapi-host": "exercisedb.p.rapidapi.com",
-      },
+      url: "https://v2.exercisedb.io/exercises",
+      params: { limit: "10", offset: "0" },
+      headers: { accept: "application/json" },
     };
-
+    // Make the request to the external API.
     const response = await axios.request(options);
-    console.log(response.data);
-
-    // Send response data back to client.
     res.json(response.data);
+    // Catch any errors and log them to the console.
   } catch (error) {
     console.error(error);
     res.status(500).json(error);

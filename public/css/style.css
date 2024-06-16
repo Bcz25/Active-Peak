@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.choice-btn.selected {
+  border: 2px solid #e53935; /* Adjust color as needed */
+  outline: none;
+}
