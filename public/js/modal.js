@@ -2,8 +2,9 @@ const newRoutine = document.querySelector("#select-modal");
 const choiceBtn = document.querySelectorAll(".choice-btn");
 const nextBtn = document.querySelector("#next-btn");
 const getRoutineBtn = document.querySelector("#get-routine-btn");
-const homeOrGym = document.querySelector("#home-or-gym");
+const styleNextBtn = document.querySelector("#style-next-btn");
 
+const homeOrGym = document.querySelector("#home-or-gym");
 const homeIntensity = document.querySelector("#home-intensity");
 const gymStyle = document.querySelector("#gym-style");
 
@@ -26,8 +27,8 @@ const strengthIntermediate = document.querySelector("#strength-intermediate");
 const hiitBeginner = document.querySelector("#hiit-beginner");
 const hiitIntermediate = document.querySelector("#hiit-intermediate");
 
-//let routineId = '';
-//let selectedRoutineType = '';
+let routineId = '';
+let selectedRoutineType = '';
 
 // Function to show or hide modals
 function showModal(modal) {
@@ -63,7 +64,6 @@ choiceBtn.forEach(button => {
 });
 }); 
 
-
 // Add event listener to the next button to show the next modal
 nextBtn.addEventListener("click", () => {
   if (selectedRoutineType === 'home') {
@@ -72,19 +72,21 @@ nextBtn.addEventListener("click", () => {
   } else if (selectedRoutineType === 'gym') {
     showModal(gymStyle);
     hideModal(homeOrGym);
-  } else if (selectedRoutineType === 'gym-strength') {
-    showModal(strengthModal);
-    hideModal(gymStyle);
-  } else if (selectedRoutineType === 'gym-hiit') {
-    showModal(hiitModal);
-    hideModal(gymStyle);
   }
   return;
 });
 
+styleNextBtn.addEventListener("click", () => {
+  if (selectedRoutineType === 'gym-strength') {
+   showModal(strengthModal);
+   hideModal(gymStyle);
+  } else if (selectedRoutineType === 'gym-hiit') {
+   showModal(hiitModal);
+   hideModal(gymStyle);
+  }
+  return;
+});
 
-let routineId = '';
-let selectedRoutineType = '';
 // Add event listener to the next button to route to the selected routine
 getRoutineBtn.addEventListener("click", () => {
     if (selectedRoutineType === 'home-beginner') {
