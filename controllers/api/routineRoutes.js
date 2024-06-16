@@ -16,8 +16,8 @@ router.get("/:id", withAuth, async (req, res) => {
     }
     const routineData = routine.get({ plain: true });
     res.render("routine", {
-      routineData,
-      exersises: routineData.Exercises,
+      Routine: routineData,
+      exercises: routineData.Exercises,
       logged_in: req.session.logged_in,
     });
     res.status(200).json(routineData);
