@@ -26,8 +26,8 @@ const strengthIntermediate = document.querySelector("#strength-intermediate");
 const hiitBeginner = document.querySelector("#hiit-beginner");
 const hiitIntermediate = document.querySelector("#hiit-intermediate");
 
-let routineId = '';
-let selectedRoutineType = '';
+//let routineId = '';
+//let selectedRoutineType = '';
 
 // Function to show or hide modals
 function showModal(modal) {
@@ -64,19 +64,15 @@ choiceBtn.forEach(button => {
 }); 
 
 
-// Add event listener to the next button to show the next modal (homeworkout routines or more options for gym workouts)
+// Add event listener to the next button to show the next modal
 nextBtn.addEventListener("click", () => {
   if (selectedRoutineType === 'home') {
     showModal(homeIntensity);
+    hideModal(homeOrGym);
   } else if (selectedRoutineType === 'gym') {
     showModal(gymStyle);
-  }
-  hideModal(homeOrGym);
-});
-
-// Add event listener to the next button to show the next modal (strength routines or hiit routines)
-nextBtn.addEventListener("click", () => {
-  if (selectedRoutineType === 'gym-strength') {
+    hideModal(homeOrGym);
+  } else if (selectedRoutineType === 'gym-strength') {
     showModal(strengthModal);
     hideModal(gymStyle);
   } else if (selectedRoutineType === 'gym-hiit') {
@@ -86,6 +82,9 @@ nextBtn.addEventListener("click", () => {
   return;
 });
 
+
+let routineId = '';
+let selectedRoutineType = '';
 // Add event listener to the next button to route to the selected routine
 getRoutineBtn.addEventListener("click", () => {
     if (selectedRoutineType === 'home-beginner') {
