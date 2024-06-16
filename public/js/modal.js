@@ -1,7 +1,7 @@
 const newRoutine = document.querySelector("#select-modal");
 const choiceBtn = document.querySelectorAll(".choice-btn");
 const nextBtn = document.querySelector("#next-btn");
-
+const getRoutineBtn = document.querySelector("#get-routine-btn");
 const homeOrGym = document.querySelector("#home-or-gym");
 
 const homeIntensity = document.querySelector("#home-intensity");
@@ -87,7 +87,7 @@ nextBtn.addEventListener("click", () => {
 });
 
 // Add event listener to the next button to route to the selected routine
-nextBtn.addEventListener("click", () => {
+getRoutineBtn.addEventListener("click", () => {
     if (selectedRoutineType === 'home-beginner') {
       routineId = "1";
     } else if (selectedRoutineType === 'home-intermediate') {
