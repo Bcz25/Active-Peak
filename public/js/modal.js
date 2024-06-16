@@ -56,9 +56,10 @@ choiceBtn.forEach(button => {
   
   // Handle the value of the selected button as needed
   const routineType = this.getAttribute('data-value');
+  
+  selectedRoutineType = routineType;
   console.log('routine Type:', selectedRoutineType);
   // You can now use selectedValue for further logic
-  selectedRoutineType = routineType;
 });
 }); 
 
@@ -87,7 +88,6 @@ nextBtn.addEventListener("click", () => {
 
 // Add event listener to the next button to route to the selected routine
 nextBtn.addEventListener("click", () => {
-
     if (selectedRoutineType === 'home-beginner') {
       routineId = "1";
     } else if (selectedRoutineType === 'home-intermediate') {
@@ -103,6 +103,7 @@ nextBtn.addEventListener("click", () => {
     } else if (selectedRoutineType === 'strength-intermediate') {
       routineId = "7";
     }
+    console.log('routine Id:', routineId);
     if (routineId) {
       document.location.replace(`/api/routines/${routineId}`);
     }
