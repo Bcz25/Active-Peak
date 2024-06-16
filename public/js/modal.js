@@ -3,6 +3,7 @@ const choiceBtn = document.querySelectorAll(".choice-btn");
 const nextBtn = document.querySelector("#next-btn");
 
 const homeOrGym = document.querySelector("#home-or-gym");
+
 const homeIntensity = document.querySelector("#home-intensity");
 const gymStyle = document.querySelector("#gym-style");
 
@@ -12,12 +13,12 @@ const hiitModal = document.querySelector("#hiit");
 const homeRoutines = document.querySelector("#home-routines");
 const gymRoutines = document.querySelector("#gym-routines");
 
+const gymStrength = document.querySelector("#gym-strength");
+const gymHiit = document.querySelector("#gym-hiit");
+
 const homeBeginner = document.querySelector("#home-beginner");
 const homeIntermediate = document.querySelector("#home-intermediate");
 const homeAdvanced = document.querySelector("#home-advanced");
-
-const gymStrength = document.querySelector("#gym-strength");
-const gymHiit = document.querySelector("#gym-hiit");
 
 const strengthBeginner = document.querySelector("#strength-beginner");
 const strengthIntermediate = document.querySelector("#strength-intermediate");
@@ -70,22 +71,23 @@ nextBtn.addEventListener("click", () => {
     showModal(gymStyle);
   }
   hideModal(homeOrGym);
-    return;
 });
 
 // Add event listener to the next button to show the next modal (strength routines or hiit routines)
 nextBtn.addEventListener("click", () => {
   if (selectedRoutineType === 'gym-strength') {
-      showModal(strengthModal);
+    showModal(strengthModal);
+    hideModal(gymStyle);
   } else if (selectedRoutineType === 'gym-hiit') {
-      showModal(hiitModal);
+    showModal(hiitModal);
+    hideModal(gymStyle);
   }
-  hideModal(gymStyle);
   return;
 });
 
 // Add event listener to the next button to route to the selected routine
 nextBtn.addEventListener("click", () => {
+
     if (selectedRoutineType === 'home-beginner') {
       routineId = "1";
     } else if (selectedRoutineType === 'home-intermediate') {
