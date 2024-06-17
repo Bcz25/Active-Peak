@@ -1,39 +1,82 @@
-// Saving a template for the profile page from the routine pages Save Template button.
-
-document
-  .getElementById("save-routine")
-  .addEventListener("click", async function () {
-    const routine_name = document.getElementById("Exercise_name").textContent;
-    const routine_description = document.getElementById(
-      "routine-description"
-    ).textContent;
-    const routine_exercises = Array.from(
-      document.querySelectorAll("#routine-exercises .exercise")
-    ).map((exercise) => ({
+document.getElementById("save-routine").addEventListener("click", async function () {
+    const routineNameElement = document.getElementById("Exercise_name");
+    const routineDescriptionElement = document.getElementById("routine-description");
+    const routineExercisesContainer = document.getElementById("routine-exercises");
+  
+    if (!routineNameElement || !routineDescriptionElement || !routineExercisesContainer) {
+      alert("Required elements are missing on the page.");
+      return;
+    }
+  
+    const routine_name = routineNameElement.textContent;
+    const routine_description = routineDescriptionElement.textContent;
+    const routine_exercises = Array.from(routineExercisesContainer.querySelectorAll(".exercise")).map(exercise => ({
       Exercise_name: exercise.querySelector(".exercise-name").textContent,
       reps: exercise.querySelector(".exercise-reps").textContent,
       description: exercise.querySelector(".exercise-description").textContent,
     }));
-
+  
     const routine = {
       Routine_name: routine_name,
       description: routine_description,
       exercises: routine_exercises,
     };
-
-    const response = await fetch("/api/routine", {
-      method: "POST",
-      body: JSON.stringify(routine),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-      document.location.replace("/profile");
-    } else {
-      alert("Failed to save routine");
+  
+    try {
+      const response = await fetch("/api/routine", {
+        method: "POST",
+        body: JSON.stringify(routine),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (response.ok) {
+        document.location.replace("/profile");
+      } else {
+        alert("Failed to save routine");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while saving the routine.");
     }
+  });
+  
+  document.querySelectorAll(".load-routine").forEach(button => {
+    button.addEventListener("click", async function (event) {
+      const routineId = event.target.getAttribute("data-id");
+      try {
+        const response = await fetch(`/api/routine/${routineId}`);
+        if (response.ok) {
+          const routine = await response.json();
+          // Populate the routine page with the fetched routine data
+          document.getElementById("Exercise_name").textContent = routine.Routine_name;
+          document.getElementById("routine-description").textContent = routine.description;
+          const routineExercisesContainer = document.getElementById("routine-exercises");
+          routineExercisesContainer.innerHTML = "";
+          routine.exercises.forEach(exercise => {
+            const exerciseDiv = document.createElement("div");
+            exerciseDiv.classList.add("exercise");
+            exerciseDiv.innerHTML = `
+              <h3 class="text-xl font-semibold exercise-name">${exercise.Exercise_name}</h3>
+              <p class="exercise-reps">${exercise.reps} reps</p>
+              <p class="exercise-description">${exercise.description}</p>
+            `;
+            routineExercisesContainer.appendChild(exerciseDiv);
+          });
+        } else {
+          alert("Failed to load routine");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while loading the routine.");
+      }
+    });
+  });
+
+  // Close gif modal button
+  close-gif-btn.addEventListener("submit", function () {
+    instructionModal.classList.add("hidden");
   });
 
 // Fetching exercise data from external API using axios and displaying it on the routine page.
