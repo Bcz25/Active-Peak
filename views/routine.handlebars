@@ -22,12 +22,13 @@
     <div id="card-container" class="grid grid-cols-2 gap-4">
       <!-- Cards will be dynamically generated here -->
       {{#each exercises as |Exercise|}}
-        <button class="get-Instructions" data-value={{Exercise.Exercise_name}}>
-          <div class="bg-gray-100 p-4 rounded shadow">
-            <h3 class="text-xl font-semibold">{{Exercise.Exercise_name}}</h3>
-            <p>Recommended Volume: {{Exercise.reps}}</p>
-          </div>
-        </button>
+      <button class="get-Instructions" data-value="{{Exercise.Exercise_name}}">
+        <div class="bg-gray-100 p-4 rounded shadow">
+          <h3 class="text-xl font-semibold">{{Exercise.Exercise_name}}</h3>
+          <p>Recommended Volume: {{Exercise.reps}}</p>
+        </div>
+      </button>
+
       {{/each}}
     </div>
     <!-- modal to display instructions for exercise -->
@@ -59,4 +60,5 @@
 </div>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/fetchedb.js"></script>
