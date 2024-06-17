@@ -25,6 +25,34 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+// Route to create a new routine.
+router.post("/", withAuth, async (req, res) => {
+  try {
+    console.log("   /n   /n   /n")
+    console.log(req.body)
+    const { Routine_name, exercises } = req.body;
+
+    // Create the routine in the database
+    const newRoutine = await Routine.create({
+      Routine_name,
+    });
+
+    // Add exercises to the routine
+    await Promise.all(exercises.map(async (exercise) => {
+      const newExercise = await Exercise.create({
+        Exercise_name: exercise.Exercise_name,
+        reps: exercise.reps,
+        RoutineId: newRoutine.id, // Associate the exercise with the new routine
+      });
+    }));
+
+    res.status(200).json({ message: "Routine created successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to create routine" });
+  }
+});
+
 // // Route using axios to fetch exercise data from external API.
 // router.get("/instructions", async (req, res) => {
 //   try {

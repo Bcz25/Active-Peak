@@ -23,8 +23,8 @@
      {{#if routines.length}}
       {{#each routines as |Routine|}}
         <div class="border-t pt-2">
-          <h2>{{Routine.Routine_name}}</h2>
-          <p>{{Routine.description}}</p>
+            <h2>{{Routine.Routine_name}}</h2>
+            <div class="p-4 md:p-5"></div>
           {{#each Routine.exercises}}
             <div class="exercise">
               <h3 class="exercise-name">{{this.Exercise_name}}</h3>

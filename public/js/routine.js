@@ -39,37 +39,37 @@ document.getElementById("save-routine").addEventListener("click", async function
     }
   });
   
-  document.querySelectorAll(".load-routine").forEach(button => {
-    button.addEventListener("click", async function (event) {
-      const routineId = event.target.getAttribute("data-id");
-      try {
-        const response = await fetch(`/api/routine/${routineId}`);
-        if (response.ok) {
-          const routine = await response.json();
-          // Populate the routine page with the fetched routine data
-          document.getElementById("Exercise_name").textContent = routine.Routine_name;
-          document.getElementById("routine-description").textContent = routine.description;
-          const routineExercisesContainer = document.getElementById("routine-exercises");
-          routineExercisesContainer.innerHTML = "";
-          routine.exercises.forEach(exercise => {
-            const exerciseDiv = document.createElement("div");
-            exerciseDiv.classList.add("exercise");
-            exerciseDiv.innerHTML = `
-              <h3 class="text-xl font-semibold exercise-name">${exercise.Exercise_name}</h3>
-              <p class="exercise-reps">${exercise.reps} reps</p>
-              <p class="exercise-description">${exercise.description}</p>
-            `;
-            routineExercisesContainer.appendChild(exerciseDiv);
-          });
-        } else {
-          alert("Failed to load routine");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred while loading the routine.");
-      }
-    });
-  });
+//   document.querySelectorAll(".load-routine").forEach(button => {
+//     button.addEventListener("click", async function (event) {
+//       const routineId = event.target.getAttribute("data-id");
+//       try {
+//         const response = await fetch(`/api/routine/${routineId}`);
+//         if (response.ok) {
+//           const routine = await response.json();
+//           // Populate the routine page with the fetched routine data
+//           document.getElementById("Exercise_name").textContent = routine.Routine_name;
+//           document.getElementById("routine-description").textContent = routine.description;
+//           const routineExercisesContainer = document.getElementById("routine-exercises");
+//           routineExercisesContainer.innerHTML = "";
+//           routine.exercises.forEach(exercise => {
+//             const exerciseDiv = document.createElement("div");
+//             exerciseDiv.classList.add("exercise");
+//             exerciseDiv.innerHTML = `
+//               <h3 class="text-xl font-semibold exercise-name">${exercise.Exercise_name}</h3>
+//               <p class="exercise-reps">${exercise.reps} reps</p>
+//               <p class="exercise-description">${exercise.description}</p>
+//             `;
+//             routineExercisesContainer.appendChild(exerciseDiv);
+//           });
+//         } else {
+//           alert("Failed to load routine");
+//         }
+//       } catch (error) {
+//         console.error("Error:", error);
+//         alert("An error occurred while loading the routine.");
+//       }
+//     });
+//   });
 
 // Close gif modal button
 const closeGifBtn = document.getElementById("close-gif-btn");
