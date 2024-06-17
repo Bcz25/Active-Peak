@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function fetchExerciseInstructions(exerciseName) {
-    fetch(`/api/exercises/instructions?name=${encodeURIComponent(exerciseName)}`)
+function fetchExerciseInstructions(Exercise_name) {
+    fetch(`/api/exercises/instructions?name=${encodeURIComponent(Exercise_name)}`)
        .then(response => response.json())
        .then(data => {
         populateAndShowModal(data);

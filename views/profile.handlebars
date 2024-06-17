@@ -19,21 +19,20 @@
       </button>
   </div>
   <!-- This is the list of routines that displays after going through the Modal to select a prefered workout routine. -->
-  <div class="bg-white rounded shadow p-6">
+  <div class="bg-white rounded shadow p-6 mt-4">
      {{#if routines.length}}
       {{#each routines as |Routine|}}
         <div class="border-t pt-2">
-          <a href="/routines/{{Routine.id}}">
-            <h2>{{Routine.Routine_name}}</h2>
-            <p>{{Routine.description}}</p>
-            {{#each Routine.exercises}}
-              <div class="exercise">
-                <h3 class="exercise-name">{{this.Exercise_name}}</h3>
-                <p class="exercise-reps">{{this.reps}} reps</p>
-                <p class="exercise-description">{{this.description}}</p>
-              </div>
-            {{/each}}
-          </a>
+          <h2>{{Routine.Routine_name}}</h2>
+          <p>{{Routine.description}}</p>
+          {{#each Routine.exercises}}
+            <div class="exercise">
+              <h3 class="exercise-name">{{this.Exercise_name}}</h3>
+              <p class="exercise-reps">{{this.reps}} reps</p>
+              <p class="exercise-description">{{this.description}}</p>
+            </div>
+          {{/each}}
+          <button class="load-routine" data-id="{{Routine.id}}">Load Routine</button>
         </div>
       {{/each}}
     {{else}}
