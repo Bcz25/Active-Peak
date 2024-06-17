@@ -71,10 +71,11 @@ document.getElementById("save-routine").addEventListener("click", async function
     });
   });
 
-  // Close gif modal button
-  close-gif-btn.addEventListener("submit", function () {
+// Close gif modal button
+const closeGifBtn = document.getElementById("close-gif-btn");
+closeGifBtn.addEventListener("click", function () {
     instructionModal.classList.add("hidden");
-  });
+});
 
 // Fetching exercise data from external API using axios and displaying it on the routine page.
 
