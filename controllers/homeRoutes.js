@@ -1,3 +1,4 @@
+// These variables are used to import the necessary modules.
 const router = require("express").Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
@@ -11,7 +12,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get signup page 
+// Get signup page 
 router.get("/signup", async (req, res) => {
   try {
     res.render("signup");

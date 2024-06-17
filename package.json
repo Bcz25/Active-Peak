@@ -36,12 +36,14 @@
   "name": "develop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/seed.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build:css": "postcss public/css/style.css -o public/css/output.css",
+    "build": "uglifyjs flowbite.js -o flowbite.min.js"
   },
   "keywords": [],
   "author": "",
@@ -62,9 +64,12 @@
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.19",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "nodemon": "^2.0.7",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
     "prettier": "^2.1.2",
     "tailwindcss": "^3.4.4"
   }

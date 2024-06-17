@@ -1,46 +1,87 @@
 <!-- This is the sign up page. It contains a form that allows users to sign up. -->
 <body>
+  <!-- The logo and title of the page. -->
   <div class="flex min-h-full flex-col justify-center px-1 py-2 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <img class="mx-auto h-full w-full" src="/images/FullLogo.jpg" alt="Your Company">
-    <h2 class="mt-1 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Start your fitness journey today!</h2>
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <img
+        class="mx-auto h-full w-full"
+        src="/images/FullLogo.jpg"
+        alt="Your Company"
+      />
+      <h2
+        class="mt-1 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+      >Start your fitness journey today!</h2>
+    </div>
+<!-- The div for the email field. -->
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form class="space-y-6" id="signup-form">
+        <div>
+          <label
+            for="email"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >Email address</label>
+          <div class="mt-2">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              class="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+<!-- The div for the username field. -->
+        <div>
+          <label
+            for="username"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >Username</label>
+          <div class="mt-2">
+            <input
+              id="users_name"
+              name="username"
+              type="username"
+              autocomplete="username"
+              class="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-none focus:ring-2 focus:border-none focus:ring-red-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+<!-- The div for the password field. -->
+        <div>
+          <div class="flex items-center justify-between">
+            <label
+              for="password"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >Password</label>
+          </div>
+          <div class="mt-2">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              class="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+<!-- The div for the sign up button. -->
+        <div>
+          <button
+            type="submit"
+            class="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >Sign up</button>
+        </div>
+      </form>
+<!-- The div for the sign in link. -->
+      <p class="mt-10 text-center text-sm text-gray-500">
+        Already a member?
+        <a
+          href="/"
+          class="font-semibold leading-6 text-red-600 hover:text-gray-500"
+        >Sign In</a>
+      </p>
+    </div>
   </div>
-
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" id="signup-form">
-      <div>
-        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-        <div class="mt-2">
-          <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6">
-        </div>
-      </div>
-
-      <div>
-        <label for="userName" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
-        <div class="mt-2">
-          <input id="users_name" name="users_name" type="users_name" autocomplete="username" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6">
-        </div>
-      </div>
-
-      <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-        </div>
-        <div class="mt-2">
-          <input id="password" name="password" type="password" autocomplete="current-password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6">
-        </div>
-      </div>
-
-      <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
-      </div>
-    </form>
-
-    <p class="mt-10 text-center text-sm text-gray-500">
-      Already a member?
-      <a href="/" class="font-semibold leading-6 text-red-600 hover:text-gray-500">Sign In</a>
-    </p>
-  </div>
-</div>
-<script src="/js/signup.js"></script>
+  <!-- The script for the sign up page. -->
+  <script src="/js/signup.js"></script>
 </body>
