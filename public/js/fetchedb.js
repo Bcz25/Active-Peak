@@ -1,4 +1,5 @@
 // fetches from exercise db api.
+require("dotenv").config();
 const getInstructions = document.querySelectorAll(".get-instructions");
 const apiURL = "https://v2.exercisedb.io/exercises/exercise/${exercise_name}";
 const instructionModal = document.querySelector("#instruction-modal");
