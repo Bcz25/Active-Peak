@@ -13,6 +13,30 @@ router.get("/", async (req, res) => {
   }
 });
 
+//get route using axios to fetch exercise data from external API and display it in a modal.
+router.get("/instructions", async (req, res) => {
+  try {
+    const exercise_name = req.query.name;
+    const options = {
+      method: "GET",
+      url: `https://exercisedb.p.rapidapi.com/exercises/name/${exercise_name}`,
+      params: { limit: "1", offset: "0" },
+      headers: {
+        accept: "application/json",
+        "x-rapidapi-key": process.env.DB_API_KEY,
+        "x-rapidapi-host": "exercisedb.p.rapidapi.com",
+      },
+    };
+    const response = await axios.request(options);
+    res.json(response.data);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
+
 // Route to get a single exercise.
 router.get("/:id", async (req, res) => {
   try {
