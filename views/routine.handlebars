@@ -4,27 +4,30 @@
   <div class="bg-white rounded shadow p-6">
     <h2 class="text-2xl font-bold mb-2">Routine Template</h2>
     <div class="flex justify-between">
-        <button
+      <button
         type="button"
         class="block text-white bg-red-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
+        style="text-decoration: none; width: 166.58px; height: 40px;"
       >
         Save Template
       </button>
-      <a href="/profile"
+      <a
+        href="/profile"
         class="block text-white bg-red-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-red-800"
-        style="text-decoration: none; width: 166.58px; height: 40px;">
+        style="text-decoration: none; width: 166.58px; height: 40px;"
+      >
         Go to Profile Page
       </a>
     </div>
     <div id="card-container" class="grid grid-cols-2 gap-4">
       <!-- Cards will be dynamically generated here -->
       {{#each exercises as |Exercise|}}
-      <button class="get-Instructions" data-value={{Exercise.Exercise_name}}>
-        <div class="bg-gray-100 p-4 rounded shadow">
-          <h3 class="text-xl font-semibold">{{Exercise.Exercise_name}}</h3>
-          <p>Recommended Volume: {{Exercise.reps}}</p>
-        </div>
-      </button>
+        <button class="get-Instructions" data-value={{Exercise.Exercise_name}}>
+          <div class="bg-gray-100 p-4 rounded shadow">
+            <h3 class="text-xl font-semibold">{{Exercise.Exercise_name}}</h3>
+            <p>Recommended Volume: {{Exercise.reps}}</p>
+          </div>
+        </button>
       {{/each}}
     </div>
   </div>
