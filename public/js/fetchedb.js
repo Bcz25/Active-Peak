@@ -12,10 +12,19 @@ getInstructions.forEach((button) => {
     button.addEventListener("click", async (event) => {
         const exercise_name = event.target.getAttribute("data-value");
         try {
-            const response = await axios.get(apiURL);
             const data = response.data;
             const instructions = data.instructions;
             const gifUrl = data.gifUrl;
+            const options = {
+                method: "GET",
+                url: apiURL,
+                params: { limit: "1", offset: "0" },
+                headers: { accept: "application/json",
+                    'x-rapidapi-key': process.env.DB_API_KEY,
+                    'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
+                 },
+              };
+            const response = await axios.request(options);
             modalGif.setAttribute("src", gifUrl);
             modalTitle.textContent = exercise_name;
             modalInstructions.textContent = instructions;
