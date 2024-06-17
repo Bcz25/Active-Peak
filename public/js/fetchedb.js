@@ -5,35 +5,33 @@ const modalGif = document.querySelector("#exercise-gif");
 const modalInstructions = document.querySelector("#exercise-instructions");
 const closeBtn = document.querySelector("#close-modal");
 const modalTitle = document.querySelector("#exercise-name");
-const DB_API_KEY = "01c81b62eamshd09f8aaffb6c9b3p14d7e1jsn50d4824f9512"
 
-getInstructions.forEach((button) => {
-    button.addEventListener("click", async (event) => {
-        const exercise_name = event.currentTarget.getAttribute("data-value");
-        const apiURL = `https://v2.exercisedb.io/exercises/name/${exercise_name}`;
-        try {
-            const options = {
-                method: "GET",
-                url: apiURL,
-                params: { limit: "1", offset: "0" },
-                headers: {
-                    accept: "application/json",
-                    'x-rapidapi-key': DB_API_KEY,
-                    'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
-                 },
-              };
-            const response = await axios.request(options);
-            const data = response.data;
-            const instructions = data.instructions;
-            const gifUrl = data.gifUrl;
-            modalGif.setAttribute("src", gifUrl);
-            modalTitle.textContent = exercise_name;
-            modalInstructions.textContent = instructions;
 
-            instructionModal.classList.remove("hidden");
-        } catch (error) {
-            console.error("There was an error fetching the exercise data:", error);
-            // Handle the error appropriately
-        }
+
+document.addEventListener('DOMContentLoaded', function() {
+    getInstructions.forEach(button => {
+      button.addEventListener('click', function(event) {
+        const exerciseName = event.currentTarget.getAttribute('data-value');
+        fetchExerciseInstructions(exerciseName);
+      });
     });
 });
+
+
+function fetchExerciseInstructions(exerciseName) {
+    fetch(`/exercise/instructions?name=${encodeURIComponent(exerciseName)}`)
+       .then(response => response.json())
+       .then(data => {
+        populateAndShowModal(data);
+       })
+       .catch(error => console.error('Error:', error));
+};
+
+function populateAndShowModal(data) {
+    modalTitle.textContent = data.name;
+    modalGif.src = data.gifUrl;
+    modalInstructions.textContent = data.instructions
+  
+    // Show the modal
+    instructionModal.classList.remove('hidden');
+};
