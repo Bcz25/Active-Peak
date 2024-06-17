@@ -1,5 +1,5 @@
 // fetches from exercise db api.
-const getInstructions = document.querySelectorAll(".getInstructions");
+const getInstructions = document.querySelectorAll(".get-instructions");
 const apiURL = "https://v2.exercisedb.io/exercises/exercise/${exercise_name}";
 const instructionModal = document.querySelector("#instruction-modal");
 const modalGif = document.querySelector("#exercise-gif");
