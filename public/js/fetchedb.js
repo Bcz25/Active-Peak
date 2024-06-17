@@ -1,6 +1,5 @@
 // fetches from exercise db api.
 const getInstructions = document.querySelectorAll(".get-instructions");
-const apiURL = `https://v2.exercisedb.io/exercises/exercise/${exercise_name}`;
 const instructionModal = document.querySelector("#instruction-modal");
 const modalGif = document.querySelector("#exercise-gif");
 const modalInstructions = document.querySelector("#exercise-instructions");
@@ -10,6 +9,7 @@ const DB_API_KEY = "01c81b62eamshd09f8aaffb6c9b3p14d7e1jsn50d4824f9512"
 getInstructions.forEach((button) => {
     button.addEventListener("click", async (event) => {
         const exercise_name = event.target.getAttribute("data-value");
+        const apiURL = `https://v2.exercisedb.io/exercises/exercise/${exercise_name}`;
         try {
             const options = {
                 method: "GET",
