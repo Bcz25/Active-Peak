@@ -6,49 +6,55 @@
     <title>Active Peak</title>
     <link rel="stylesheet" href="/css/jass.css" />
     <link rel="stylesheet" href="/css/output.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="h-full">
-  <main>
-    <!-- Navigation bar -->
-  <nav class="bg-gray-500 mx-auto">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div class="relative h-16 items-center justify-between">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+    <main>
+      <!-- Navigation bar -->
+      <nav class="bg-gray-500 w-full">
+        <div
+          class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex items-center h-16"
+        >
+          <!-- Logo and company name -->
+          <div class="flex items-center">
+            <img
+              class="h-14 w-14 rounded-full shadow-lg"
+              src="/images/ActivePeakNan.png"
+              alt="Your Company Logo"
+            />
+            <h1 class="text-gray-900 text-3xl font-bold ml-4">Active Peak</h1>
+          </div>
+
+          <!-- Spacer -->
+          <div class="flex-grow"></div>
+
+          <!-- Logout button (conditionally rendered if logged in) -->
+          <div>
+            {{#if logged_in}}
+              <button
+                id="logout"
+                type="click"
+                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >Log Out</button>
+            {{/if}}
+          </div>
+        </div>
+      </nav>
+      <!-- Main content displayed through handlebars syntax. -->
+      <div>
+        {{{body}}}
       </div>
-      <div class="flex items-center px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center flex-shrink-0">
-      <img class="h-20 w-20 mx-auto" src="/images/ActivePeakNan.png" alt="Your Company">
-      <h1 class="text-gray-300 ml-4">Active Peak</h1>
-    </div>
-    <!-- If the user is logged in, display the logout button. -->
+    </main>
+    <!-- If logged in, use the logout script. -->
     {{#if logged_in}}
-    <div class="flex justify-center items-center">
-  <div class="flex justify-center items-center flex-shrink-0 mx-10">
-      <button id="logout" type="click" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log Out</button>
-  </div>
-</div>
+      <script src="/js/logout.js"></script>
     {{/if}}
-    </div>
-  </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<!-- Main content displayed through handlebars syntax. -->
-<div>
-    {{{body}}}
-</div>
-  </main>
-  <!-- If logged in, use the logout script. -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-</body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"
+    ></script>
+  </body>
 </html>
