@@ -26,7 +26,7 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 // Route using axios to fetch exercise data from external API.
-router.get("/routine", async (req, res) => {
+router.get("/instructions", async (req, res) => {
   try {
     // Set the options for the axios request.
     const options = {
