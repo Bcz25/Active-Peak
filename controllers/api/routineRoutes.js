@@ -32,9 +32,12 @@ router.get("/routine", async (req, res) => {
     // Set the options for the axios request.
     const options = {
       method: "GET",
-      url: "https://v2.exercisedb.io/exercises",
-      params: { limit: "10", offset: "0" },
-      headers: { accept: "application/json" },
+      url: `https://exercisedb.p.rapidapi.com/exercises/name/${exercise_name}`,
+      params: { limit: "1", offset: "0" },
+      headers: { accept: "application/json",
+          'x-rapidapi-key': process.env.DB_API_KEY,
+          'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
+       },
     };
     // Make the request to the external API.
     const response = await axios.request(options);
