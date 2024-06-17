@@ -11,9 +11,6 @@ getInstructions.forEach((button) => {
     button.addEventListener("click", async (event) => {
         const exercise_name = event.target.getAttribute("data-value");
         try {
-            const data = response.data;
-            const instructions = data.instructions;
-            const gifUrl = data.gifUrl;
             const options = {
                 method: "GET",
                 url: apiURL,
@@ -24,6 +21,9 @@ getInstructions.forEach((button) => {
                  },
               };
             const response = await axios.request(options);
+            const data = response.data;
+            const instructions = data.instructions;
+            const gifUrl = data.gifUrl;
             modalGif.setAttribute("src", gifUrl);
             modalTitle.textContent = exercise_name;
             modalInstructions.textContent = instructions;
