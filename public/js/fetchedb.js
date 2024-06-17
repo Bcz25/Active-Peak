@@ -12,22 +12,24 @@ document.addEventListener('DOMContentLoaded', function() {
     getInstructions.forEach(button => {
       button.addEventListener('click', function(event) {
         const exerciseName = event.currentTarget.getAttribute('data-value');
+        console.log(exerciseName);
         fetchExerciseInstructions(exerciseName);
       });
     });
 });
 
 
-function fetchExerciseInstructions(Exercise_name) {
-    fetch(`/api/exercises/instructions?name=${encodeURIComponent(Exercise_name)}`)
+function fetchExerciseInstructions(exerciseName) {
+    fetch(`/api/exercises/instructions?name=${encodeURIComponent(exerciseName)}`)
        .then(response => response.json())
        .then(data => {
-        populateAndShowModal(data);
+        populateAndShowModal(data[0]);
        })
        .catch(error => console.error('Error:', error));
 };
 
 function populateAndShowModal(data) {
+  console.log(data);
     modalTitle.textContent = data.name;
     modalGif.src = data.gifUrl;
     modalInstructions.textContent = data.instructions

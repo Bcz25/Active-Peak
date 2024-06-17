@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const { Exercise } = require("../../models");
 const withAuth = require("../../utils/authGuard");
+const axios = require("axios");
 
 // Route to get all exercises.
 router.get("/", async (req, res) => {
@@ -27,6 +28,7 @@ router.get("/instructions", async (req, res) => {
         "x-rapidapi-host": "exercisedb.p.rapidapi.com",
       },
     };
+    console.log('\n \n')
     const response = await axios.request(options);
     res.json(response.data);
     console.log(response.data);
