@@ -1,6 +1,6 @@
 // fetches from exercise db api.
 const getInstructions = document.querySelectorAll(".get-instructions");
-const apiURL = "https://v2.exercisedb.io/exercises/exercise/${exercise_name}";
+const apiURL = `https://v2.exercisedb.io/exercises/exercise/${exercise_name}`;
 const instructionModal = document.querySelector("#instruction-modal");
 const modalGif = document.querySelector("#exercise-gif");
 const modalInstructions = document.querySelector("#exercise-instructions");
@@ -15,7 +15,8 @@ getInstructions.forEach((button) => {
                 method: "GET",
                 url: apiURL,
                 params: { limit: "1", offset: "0" },
-                headers: { accept: "application/json",
+                headers: {
+                    accept: "application/json",
                     'x-rapidapi-key': DB_API_KEY,
                     'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
                  },
