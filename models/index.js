@@ -12,5 +12,8 @@ Routine.belongsTo(Users, {});
 // Routine have many Exercise.
 Routine.hasMany(Exercise, {});
 
+// Exercise belongs to Routine.
+Exercise.belongsTo(Routine, {});
+
 // Export the models.
 module.exports = { Exercise, Routine, Users };

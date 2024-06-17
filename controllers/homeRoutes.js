@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get signup page 
+// Get signup page 
 router.get("/signup", async (req, res) => {
   try {
     res.render("signup");
