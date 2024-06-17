@@ -6,9 +6,10 @@ const modalInstructions = document.querySelector("#exercise-instructions");
 const closeBtn = document.querySelector("#close-modal");
 const modalTitle = document.querySelector("#exercise-name");
 const DB_API_KEY = "01c81b62eamshd09f8aaffb6c9b3p14d7e1jsn50d4824f9512"
+
 getInstructions.forEach((button) => {
     button.addEventListener("click", async (event) => {
-        const exercise_name = event.target.getAttribute("data-value");
+        const exercise_name = event.currentTarget.getAttribute("data-value");
         const apiURL = `https://v2.exercisedb.io/exercises/name/${exercise_name}`;
         try {
             const options = {
