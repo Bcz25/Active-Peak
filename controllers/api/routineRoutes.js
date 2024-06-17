@@ -29,6 +29,7 @@ router.get("/:id", withAuth, async (req, res) => {
 router.get("/instructions", async (req, res) => {
   try {
     // Set the options for the axios request.
+    const exercise_name = req.query.name;
     const options = {
       method: "GET",
       url: `https://exercisedb.p.rapidapi.com/exercises/name/${exercise_name}`,
