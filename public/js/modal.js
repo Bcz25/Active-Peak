@@ -52,11 +52,12 @@ newRoutine.addEventListener("click", () => {
 // Add event listener to the close button to hide the modal
 closeModalBtn.forEach(button => {
   button.addEventListener('click', function() {
-    homeOrGym.classList.add("hidden");
-    homeIntensity.classList.add("hidden");
-    gymStyle.classList.add("hidden");
-    strengthModal.classList.add("hidden");
-    hiitModal.classList.add("hidden");
+    hideModal(homeOrGym);
+    hideModal(homeIntensity);
+    hideModal(gymStyle);
+    hideModal(strengthModal);
+    hideModal(hiitModal);
+    window.location.replace('/profile');
   });
 });
 
