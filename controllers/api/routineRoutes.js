@@ -25,6 +25,34 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+// Route to get all routines for the profile page.
+router.get("/", withAuth, async (req, res) => {
+  try {
+    const routines = await Routine.findAll({
+      where: { users_id: req.session.user_id },
+      include: [Exercise],
+    });
+
+    res.status(200).json(routines);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// Route to save a routine to profile page using routine.js and routine.handlebars then passing it into the profile.handlebars and the database.
+router.post("/", withAuth, async (req, res) => {
+  try {
+    const newRoutine = await Routine.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(newRoutine);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // Route using axios to fetch exercise data from external API.
 router.get("/instructions", async (req, res) => {
   try {
@@ -34,10 +62,11 @@ router.get("/instructions", async (req, res) => {
       method: "GET",
       url: `https://exercisedb.p.rapidapi.com/exercises/name/${exercise_name}`,
       params: { limit: "1", offset: "0" },
-      headers: { accept: "application/json",
-          'x-rapidapi-key': process.env.DB_API_KEY,
-          'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
-       },
+      headers: {
+        accept: "application/json",
+        "x-rapidapi-key": process.env.DB_API_KEY,
+        "x-rapidapi-host": "exercisedb.p.rapidapi.com",
+      },
     };
     // Make the request to the external API.
     const response = await axios.request(options);

@@ -42,5 +42,22 @@ router.get("/routine", withAuth, async (req, res) => {
   }
 });
 
+// Route to save the routine to the profile page and the database.
+router.post("/", withAuth, async (req, res) => {
+  try {
+    const newRoutine = await Routine.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+    res.status(200).json(newRoutine);
+    res.render("profile", {
+      newRoutine,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // Export the router.
 module.exports = router;
