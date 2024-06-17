@@ -1,5 +1,4 @@
 // fetches from exercise db api.
-require("dotenv").config();
 const getInstructions = document.querySelectorAll(".get-instructions");
 const apiURL = "https://v2.exercisedb.io/exercises/exercise/${exercise_name}";
 const instructionModal = document.querySelector("#instruction-modal");
@@ -7,7 +6,7 @@ const modalGif = document.querySelector("#exercise-gif");
 const modalInstructions = document.querySelector("#exercise-instructions");
 const closeBtn = document.querySelector("#close-modal");
 const modalTitle = document.querySelector("#exercise-name");
-
+const DB_API_KEY = "01c81b62eamshd09f8aaffb6c9b3p14d7e1jsn50d4824f9512"
 getInstructions.forEach((button) => {
     button.addEventListener("click", async (event) => {
         const exercise_name = event.target.getAttribute("data-value");
@@ -17,7 +16,7 @@ getInstructions.forEach((button) => {
                 url: apiURL,
                 params: { limit: "1", offset: "0" },
                 headers: { accept: "application/json",
-                    'x-rapidapi-key': process.env.DB_API_KEY,
+                    'x-rapidapi-key': DB_API_KEY,
                     'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
                  },
               };
