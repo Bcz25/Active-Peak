@@ -57,7 +57,7 @@ closeModalBtn.forEach(button => {
     hideModal(gymStyle);
     hideModal(strengthModal);
     hideModal(hiitModal);
-    window.location.href = '/profile';
+    window.location.replace('/profile');
   });
 });
 
