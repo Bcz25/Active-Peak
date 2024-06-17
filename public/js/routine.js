@@ -1,28 +1,25 @@
 document.getElementById("save-routine").addEventListener("click", async function () {
     const routineNameElement = document.getElementById("Exercise_name");
-    const routineDescriptionElement = document.getElementById("routine-description");
     const routineExercisesContainer = document.getElementById("routine-exercises");
   
-    if (!routineNameElement || !routineDescriptionElement || !routineExercisesContainer) {
+    if (!routineNameElement || !routineExercisesContainer) {
       alert("Required elements are missing on the page.");
       return;
     }
   
     const routine_name = routineNameElement.textContent;
-    const routine_description = routineDescriptionElement.textContent;
     const routine_exercises = Array.from(routineExercisesContainer.querySelectorAll(".exercise")).map(exercise => ({
       Exercise_name: exercise.querySelector(".exercise-name").textContent,
       reps: exercise.querySelector(".exercise-reps").textContent,
-      description: exercise.querySelector(".exercise-description").textContent,
     }));
   
     const routine = {
       Routine_name: routine_name,
-      description: routine_description,
       exercises: routine_exercises,
     };
   
     try {
+        console.log(routine)
       const response = await fetch("/api/routine", {
         method: "POST",
         body: JSON.stringify(routine),

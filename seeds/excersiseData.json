@@ -1,5 +1,5 @@
 [
-    { "id": 1, "Exercise_name": "Assisted Bodyweight Squat", "reps": "10", "RoutineId": 1 },
+    { "id": 1, "Exercise_name": "air bike", "reps": "10", "RoutineId": 1 },
     { "id": 2, "Exercise_name": "Elevated or Knee Push-up", "reps": "10", "RoutineId": 1 },
     { "id": 3, "Exercise_name": "Dumbell Rows", "reps": "10 per side", "RoutineId": 1 },
     { "id": 4, "Exercise_name": "Knee Planks", "reps": "15-30 seconds", "RoutineId": 1 },
