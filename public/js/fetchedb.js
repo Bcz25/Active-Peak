@@ -1,4 +1,5 @@
 // fetches from exercise db api.
+const axios = require('axios');
 const getInstructions = document.querySelector(".getInstructions");
 const apiURL = "https://v2.exercisedb.io/exercises/exercise/${exercise_name}";
 const instructionModal = document.querySelector("#instructionModal");
@@ -6,7 +7,6 @@ const modalGif = document.querySelector("#exercise-gif");
 const modalInstructions = document.querySelector("#exercise-instructions");
 const closeBtn = document.querySelector("#close-modal");
 const modalTitle = document.querySelector("#exercise-name");
-const axios = require("axios");
 
 getInstructions.forEach((button) => {
     button.addEventListener("click", async (event) => {
