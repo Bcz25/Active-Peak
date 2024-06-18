@@ -14,12 +14,13 @@ Routine.belongsTo(Users, {
     through: UserRoutine,
 });
 
+// Users have many UserRoutine.
 Users.hasMany(UserRoutine);
-
+// UserRoutine belongs to Users.
 UserRoutine.belongsTo(Users);
-
+// Routine has many UserRoutine.
 Routine.hasMany(UserRoutine);
-
+// UserRoutine belongs to Routine.
 UserRoutine.belongsTo(Routine);
 
 // Exercise belongs to Routine.

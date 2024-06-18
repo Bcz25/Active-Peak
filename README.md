@@ -38,11 +38,13 @@ The Active Peak fitness manager is perfect for fitness enthusiasts and professio
 - <strong>Active Peak Screenshots</strong>
 
 - ![WireFrame](./public/images/active-peak-wireframe&app-flowchart.jpg)
+- ![WireFrame](./public/images/Workout-selector.jpg)
 - ![Screenshot](/public/images/Login.png)
 - ![Screenshot](/public/images/SignUp.png)
 - ![Screenshot](/public/images/Profile.png)
 - ![Screenshot](/public/images/RoutineModal.png)
 - ![Screenshot](/public/images/RoutinesPage.png)
+- ![Screenshot](/public/images/Axios.png)
 
 ## Support
 

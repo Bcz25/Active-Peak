@@ -4,7 +4,7 @@
     <h2 class="text-2xl font-bold mb-2">Profile</h2>
     <p><strong>Name:</strong> {{Users.users_name}}</p>
   </div>
-  <!-- Modal toggle button for creating a routine -->
+  <!-- Modal toggle button for creating a routine. -->
   <div class="mt-10 bg-white rounded shadow p-6">
     <h2 class="text-2xl font-bold mb-2">Routines</h2>
     <div class="flex justify-between">
@@ -18,7 +18,7 @@
         Create New Routine
       </button>
   </div>
-  <!-- This is the list of routines that displays after going through the Modal to select a prefered workout routine. -->
+  <!-- This is the list of routines that displays after going through the Modal to save a prefered workout routine. -->
   <div class="bg-white rounded shadow p-6 mt-4">
      {{#if routines.length}}
       {{#each routines as |Routine|}}
@@ -38,12 +38,12 @@
       <p>No Routine Template Preferences Saved.</p>
     {{/if}}
   </div>
-<!-- Modal for selecting a workout routine -->
+<!-- Modal for selecting a workout routine. -->
 <div id="home-or-gym" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
   <div class="relative max-h-full w-full max-w-md p-4">
-    <!-- Modal content -->
+    <!-- Modal content. -->
     <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
-      <!-- Modal header -->
+      <!-- Modal header. -->
       <div class="flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600">
         <h3 class="text-lg font-semibold text-gray-900">Where will you be training?</h3>
         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-modal">

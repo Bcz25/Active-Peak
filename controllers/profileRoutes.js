@@ -58,46 +58,5 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-// Route to save a routine to profile page using routine.js and routine.handlebars then passing it into the profile.handlebars and the database
-router.post("/", withAuth, async (req, res) => {
-  try {
-    const newRoutine = await Routine.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-
-    const exercises = req.body.exercises.map(exercise => ({
-      ...exercise,
-      Routine_id: newRoutine.id,
-      users_id: req.session.user_id,
-    }));
-
-    await Exercise.bulkCreate(exercises);
-
-    res.status(200).json(newRoutine);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-// Route to get a specific routine by ID
-router.get("/:id", withAuth, async (req, res) => {
-  try {
-    const routine = await Routine.findOne({
-      where: { id: req.params.id, users_id: req.session.user_id },
-      include: [Exercise],
-    });
-
-    if (!routine) {
-      res.status(404).json({ message: 'No routine found with this id!' });
-      return;
-    }
-
-    res.status(200).json(routine);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 // Export the router.
 module.exports = router;
