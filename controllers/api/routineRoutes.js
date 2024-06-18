@@ -28,13 +28,14 @@ router.get("/:id", withAuth, async (req, res) => {
 // Route to create a new routine.
 router.post("/", withAuth, async (req, res) => {
   try {
-    console.log("   /n   /n   /n")
     console.log(req.body)
     const { Routine_name, exercises } = req.body;
+    const user_id = req.session.user_id;
 
     // Create the routine in the database
     const newRoutine = await Routine.create({
       Routine_name,
+      users_id: user_id,
     });
 
     // Add exercises to the routine

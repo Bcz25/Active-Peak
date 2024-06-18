@@ -17,6 +17,7 @@ router.get("/", withAuth, async (req, res) => {
     }
     // Serialize the user data so the template can read it.
     const userData = user.get({ plain: true });
+    console.log(userData);
     // Render the profile page, passing in the user data and whether the user is logged in.
     res.render("profile", {
       Users: userData,

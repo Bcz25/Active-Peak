@@ -16,13 +16,13 @@ Routine.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    users_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Users",
-        key: "id",
-      },
-    },
+    // users_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "Users",
+    //     key: "id",
+    //   },
+    // },
   },
   // These are the configuration options for the Routine model.
   {
