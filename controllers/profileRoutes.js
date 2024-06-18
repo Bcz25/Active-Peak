@@ -10,6 +10,7 @@ router.get("/", withAuth, async (req, res) => {
     const user = await Users.findByPk(req.session.user_id, {
       include: [Routine],
     });
+    console.log(user)
     // If the user was not found, send an error.
     if (!user) {
       res.status(404).json({ message: "No user with that username found!" });
@@ -21,7 +22,7 @@ router.get("/", withAuth, async (req, res) => {
     // Render the profile page, passing in the user data and whether the user is logged in.
     res.render("profile", {
       Users: userData,
-      routines: userData.Routines,
+      Routines: userData.Routines,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

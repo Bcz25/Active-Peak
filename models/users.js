@@ -29,13 +29,6 @@ Users.init(
         len: [1],
       },
     },
-    routine_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Routine",
-        key: "id",
-      },
-    },
   },
   // These are the hooks that will hash the password before creating or updating a user.
   {
