@@ -1,9 +1,0 @@
-[
-    { "id": 1, "Routine_name": "Beginner Home Workout","user_id": 1 },
-    { "id": 2, "Routine_name": "Intermediate Home Workout", "user_id": 1},
-    { "id": 3, "Routine_name": "Advanced Home Workout", "user_id": 1},
-    { "id": 4, "Routine_name": "Beginner Fat Burner",  "user_id": 1},
-    { "id": 5, "Routine_name": "Intermediate/Advanced Fat Burner", "user_id": 1},
-    { "id": 6, "Routine_name": "Beginner Strength Training", "user_id": 1},
-    { "id": 7, "Routine_name": "Intermediate Strength Training", "user_id": 1}
-  ]

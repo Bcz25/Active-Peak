@@ -9,7 +9,7 @@
 
 ## Description
 
-- My motivation for building this application was driven by a passion for empowering individuals to take control of their fitness journeys in a personalized and supportive environment.
+- Our motivation for building this application was driven by a passion for empowering individuals to take control of their fitness journeys in a personalized and supportive environment.
 - This project was built to provide users with personalized workout routines, a platform to share progress pictures, and a community to foster motivation and engagement.
 - This solves the problem of finding suitable workout routines tailored to individual demographics and offers a supportive environment for sharing fitness achievements.
 - In this project, we learned the importance of creating a user-friendly interface and the impact of a supportive community on maintaining fitness motivation.
@@ -33,15 +33,16 @@ The Active Peak fitness manager is perfect for fitness enthusiasts and professio
 
 - <strong>Active Peak Link</strong>
 
-- [Website-Link](N/A)
+- [Website-Link](https://active-peak2.onrender.com/)
 
 - <strong>Active Peak Screenshots</strong>
 
 - ![WireFrame](./public/images/active-peak-wireframe&app-flowchart.jpg)
-- [Screenshot](N/A)
-- [Screenshot](N/A)
-- [Screenshot](N/A)
-- [Screenshot](N/A)
+- ![Screenshot](/public/images/Login.png)
+- ![Screenshot](/public/images/SignUp.png)
+- ![Screenshot](/public/images/Profile.png)
+- ![Screenshot](/public/images/RoutineModal.png)
+- ![Screenshot](/public/images/RoutinesPage.png)
 
 ## Support
 
