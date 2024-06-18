@@ -32,8 +32,12 @@
       <!-- Main content displayed through handlebars syntax. -->
     <main class="h-full">
         {{{body}}}
+        <footer class="bg-gray-500 text-white text-center p-4 mt-4">
+        <div class="container mx-auto">
+            <p>&copy; <span id="year"></span> Active Peak. All rights reserved.</p>
+        </div>
+    </footer>
     </main>
-  
     <!-- If logged in, use the logout script. -->
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
