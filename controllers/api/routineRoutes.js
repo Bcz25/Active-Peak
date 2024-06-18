@@ -1,7 +1,6 @@
 // These variables are used to import the necessary modules.
-const axios = require("axios");
 const router = require("express").Router();
-const { Routine, Exercise } = require("../../models");
+const { Routine, Exercise, UserRoutine } = require("../../models");
 const withAuth = require("../../utils/authGuard");
 
 // Route to get a single routine.
@@ -54,29 +53,24 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-// // Route using axios to fetch exercise data from external API.
-// router.get("/instructions", async (req, res) => {
-//   try {
-//     // Set the options for the axios request.
-//     const exercise_name = req.query.name;
-//     const options = {
-//       method: "GET",
-//       url: `https://exercisedb.p.rapidapi.com/exercises/name/${exercise_name}`,
-//       params: { limit: "1", offset: "0" },
-//       headers: {
-//         accept: "application/json",
-//         "x-rapidapi-key": process.env.DB_API_KEY,
-//         "x-rapidapi-host": "exercisedb.p.rapidapi.com",
-//       },
-//     };
-//     // Make the request to the external API.
-//     const response = await axios.request(options);
-//     res.json(response.data);
-//     // Catch any errors and log them to the console.
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json(error);
-//   }
-// });
+router.post("/saveRoutine", withAuth, async (req, res) => {
+  try {
+    const UserId = req.session.user_id;
+    const RoutineId = parseInt(req.body.routine_id);
+    console.log(UserId)
+    console.log(RoutineId)
+    const newAssociation = await UserRoutine.create({
+      UserId,
+      RoutineId,
+      custom_routine_name: req.body.custom_routine_name
+    });
+    console.log(newAssociation)
+    res.status(200).json(newAssociation);
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to save routine" });
+  }
+});
 // Export the router.
 module.exports = router;

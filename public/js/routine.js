@@ -1,35 +1,19 @@
 document.getElementById("save-routine").addEventListener("click", async function () {
-    const routineNameElement = document.getElementById("Exercise_name");
-    const routineExercisesContainer = document.getElementById("routine-exercises");
   
-    if (!routineNameElement || !routineExercisesContainer) {
-      alert("Required elements are missing on the page.");
-      return;
-    }
-  
-    const routine_name = routineNameElement.textContent;
-    const routine_exercises = Array.from(routineExercisesContainer.querySelectorAll(".exercise")).map(exercise => ({
-      Exercise_name: exercise.querySelector(".exercise-name").textContent,
-      reps: exercise.querySelector(".exercise-reps").textContent,
-    }));
-  
-    const routine = {
-      Routine_name: routine_name,
-      exercises: routine_exercises,
-    };
-  
+    const routineNameEl = document.getElementById("routineSaveName")
+    const routine_name = routineNameEl.value || routineNameEl.dataset.defaultName;
+    const routine_id = routineNameEl.dataset.routineId;
+  console.log(routine_id, routine_name)
     try {
-        console.log(routine)
-      const response = await fetch("/api/routine", {
+      const response = await fetch("/api/routines/saveRoutine", {
         method: "POST",
-        body: JSON.stringify(routine),
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ routine_id: routine_id, custom_routine_name: routine_name }),
       });
-  
       if (response.ok) {
-        document.location.replace("/profile");
+        alert("Routine saved successfully!");
       } else {
         alert("Failed to save routine");
       }
