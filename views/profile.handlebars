@@ -5,9 +5,17 @@
     <p><strong>Name:</strong> {{Users.users_name}}</p>
   </div>
   <!-- Modal toggle button for creating a routine. -->
-  <div class="mt-10 bg-white rounded shadow p-6">
-    <h2 class="text-2xl font-bold mb-2">Routines</h2>
-    <div class="flex justify-between">
+  <h2 class="text-2xl font-bold mb-2">My Routines</h2>
+      <div id="card-container" class="grid grid-cols-2 gap-4 mt-4">
+        {{#each userRoutines}}
+        <a href="/api/routines/{{this.RoutineId}}" class="no-underline">
+          <div class="bg-gray-100 p-4 rounded shadow">
+            <h3 class="text-xl font-semibold my-routineshow c">{{this.custom_routine_name}}</h3> <!-- Adjusted to use custom_routine_name -->
+          </div>
+        </a>
+        {{/each}}
+      </div>
+    <div class="mt-4"></div>
       <button
         id="select-modal"
         type="button"
@@ -17,26 +25,6 @@
       >
         Create New Routine
       </button>
-  </div>
-  <!-- This is the list of routines that displays after going through the Modal to save a prefered workout routine. -->
-  <div class="bg-white rounded shadow p-6 mt-4">
-     {{#if routines.length}}
-      {{#each routines as |Routine|}}
-        <div class="border-t pt-2">
-            <h2>{{Routine.Routine_name}}</h2>
-            <div class="p-4 md:p-5"></div>
-          {{#each Routine.exercises}}
-            <div class="exercise">
-              <h3 class="exercise-name">{{this.Exercise_name}}</h3>
-              <p class="exercise-reps">{{this.reps}} reps</p>
-            </div>
-          {{/each}}
-          <button class="load-routine" data-id="{{Routine.id}}">Load Routine</button>
-        </div>
-      {{/each}}
-    {{else}}
-      <p>No Routine Template Preferences Saved.</p>
-    {{/if}}
   </div>
 <!-- Modal for selecting a workout routine. -->
 <div id="home-or-gym" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">

@@ -2,7 +2,7 @@
 const sequelize = require("../config/connection");
 const { Exercise } = require("../models");
 const { Routine } = require("../models");
-const exerciseData = require("./excersiseData.json");
+const exerciseData = require("./exerciseData.json");
 const routineData = require("./routineData.json");
 
 // Define the function that will seed the database
