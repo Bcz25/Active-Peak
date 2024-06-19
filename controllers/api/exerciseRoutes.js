@@ -19,10 +19,8 @@ router.get("/instructions", async (req, res) => {
       },
     };
     // Make the axios request.
-    console.log('\n \n')
     const response = await axios.request(options);
     res.json(response.data);
-    console.log(response.data);
   } catch (error) {
     console.error(error);
     res.status(500).json(error);

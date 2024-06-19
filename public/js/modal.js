@@ -33,8 +33,8 @@ const strengthIntermediate = document.querySelector("#strength-intermediate");
 const hiitBeginner = document.querySelector("#hiit-beginner");
 const hiitIntermediate = document.querySelector("#hiit-intermediate");
 // These variables are used to store the selected routine type and routine id.
-let routineId = '';
-let selectedRoutineType = '';
+let routineId = "";
+let selectedRoutineType = "";
 
 // Function to show or hide modals.
 function showModal(modal) {
@@ -46,50 +46,48 @@ function hideModal(modal) {
 
 // Add event listener to the create routine button to show the first modal.
 newRoutine.addEventListener("click", () => {
-    showModal(homeOrGym);
+  showModal(homeOrGym);
 });
 
-
 // Add event listener to the close button to hide the modal.
-closeModalBtn.forEach(button => {
-  button.addEventListener('click', function() {
+closeModalBtn.forEach((button) => {
+  button.addEventListener("click", function () {
     hideModal(homeOrGym);
     hideModal(homeIntensity);
     hideModal(gymStyle);
     hideModal(strengthModal);
     hideModal(hiitModal);
-    window.location.replace('/profile');
+    window.location.replace("/profile");
   });
 });
 
 // Add event listener to each choice button insode the modals.
-choiceBtn.forEach(button => {
- button.addEventListener('click', function() {
- // Deselect all buttons
- choiceBtn.forEach(btn => {
-    btn.classList.remove('selected'); // Remove selected class.
-    btn.setAttribute('aria-pressed', 'false'); // Update aria-pressed attribute for accessibility.
- });
-  // Select this button.
-  this.classList.add('selected');
-  this.setAttribute('aria-pressed', 'true');
-  
-  // Handle the value of the selected button as needed.
-  const routineType = this.getAttribute('data-value');
-  
-  selectedRoutineType = routineType;
-  console.log('routine Type:', selectedRoutineType);
-  // You can now use selectedValue for further logic.
+choiceBtn.forEach((button) => {
+  button.addEventListener("click", function () {
+    // Deselect all buttons
+    choiceBtn.forEach((btn) => {
+      btn.classList.remove("selected"); // Remove selected class.
+      btn.setAttribute("aria-pressed", "false"); // Update aria-pressed attribute for accessibility.
+    });
+    // Select this button.
+    this.classList.add("selected");
+    this.setAttribute("aria-pressed", "true");
+
+    // Handle the value of the selected button as needed.
+    const routineType = this.getAttribute("data-value");
+
+    selectedRoutineType = routineType;
+    // You can now use selectedValue for further logic.
+  });
 });
-}); 
 
 // Add event listener to the next button to show the next modal.
 nextBtn.addEventListener("click", () => {
   // Show the next modal based on the selected routine type.
-  if (selectedRoutineType === 'home') {
+  if (selectedRoutineType === "home") {
     showModal(homeIntensity);
     hideModal(homeOrGym);
-  } else if (selectedRoutineType === 'gym') {
+  } else if (selectedRoutineType === "gym") {
     showModal(gymStyle);
     hideModal(homeOrGym);
   }
@@ -98,12 +96,12 @@ nextBtn.addEventListener("click", () => {
 // Add event listener to the next button to show the next modal.
 styleNextBtn.addEventListener("click", () => {
   // Show the next modal based on the selected routine type.
-  if (selectedRoutineType === 'gym-strength') {
-   showModal(strengthModal);
-   hideModal(gymStyle);
-  } else if (selectedRoutineType === 'gym-hiit') {
-   showModal(hiitModal);
-   hideModal(gymStyle);
+  if (selectedRoutineType === "gym-strength") {
+    showModal(strengthModal);
+    hideModal(gymStyle);
+  } else if (selectedRoutineType === "gym-hiit") {
+    showModal(hiitModal);
+    hideModal(gymStyle);
   }
   return;
 });
@@ -111,24 +109,24 @@ styleNextBtn.addEventListener("click", () => {
 // Add event listener to the next button to route to the selected routine.
 getHomeRoutine.addEventListener("click", () => {
   // Show the next modal based on the selected routine type.
-    if (selectedRoutineType === 'home-beginner') {
-      routineId = "1";
-    } else if (selectedRoutineType === 'home-intermediate') {
-      routineId = "2";
-    } else if (selectedRoutineType === 'home-advanced') {
-      routineId = "3";
-    }
-    if (routineId) {
-      document.location.replace(`/api/routines/${routineId}`);
-    }
-    return;
+  if (selectedRoutineType === "home-beginner") {
+    routineId = "1";
+  } else if (selectedRoutineType === "home-intermediate") {
+    routineId = "2";
+  } else if (selectedRoutineType === "home-advanced") {
+    routineId = "3";
+  }
+  if (routineId) {
+    document.location.replace(`/api/routines/${routineId}`);
+  }
+  return;
 });
 // Add event listener to the next button to route to the selected routine.
 getHiitRoutine.addEventListener("click", () => {
   // Show the next modal based on the selected routine type.
-  if (selectedRoutineType === 'hiit-beginner') {
+  if (selectedRoutineType === "hiit-beginner") {
     routineId = "4";
-  } else if (selectedRoutineType === 'hiit-intermediate') {
+  } else if (selectedRoutineType === "hiit-intermediate") {
     routineId = "5";
   }
   if (routineId) {
@@ -139,9 +137,9 @@ getHiitRoutine.addEventListener("click", () => {
 // Add event listener to the next button to route to the selected routine.
 getStrengthRoutine.addEventListener("click", () => {
   // Show the next modal based on the selected routine type.
-  if (selectedRoutineType === 'strength-beginner') {
+  if (selectedRoutineType === "strength-beginner") {
     routineId = "6";
-  } else if (selectedRoutineType === 'strength-intermediate') {
+  } else if (selectedRoutineType === "strength-intermediate") {
     routineId = "7";
   }
   if (routineId) {

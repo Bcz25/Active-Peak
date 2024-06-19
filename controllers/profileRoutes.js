@@ -10,7 +10,6 @@ router.get("/", withAuth, async (req, res) => {
     const user = await Users.findByPk(req.session.user_id, {
       include: [UserRoutine],
     });
-    console.log(user)
     // If the user was not found, send an error.
     if (!user) {
       res.status(404).json({ message: "No user with that username found!" });
@@ -18,7 +17,6 @@ router.get("/", withAuth, async (req, res) => {
     }
     // Serialize the user data so the template can read it.
     const userData = user.get({ plain: true });
-    console.log(userData);
     // Render the profile page, passing in the user data and whether the user is logged in.
     res.render("profile", {
       Users: userData,
@@ -35,7 +33,7 @@ router.get("/routine", withAuth, async (req, res) => {
   try {
     const routineData = await Routine.findAll({ include: [Exercise] });
     res.render("routine", {
-      routineData: routineData.map(routine => routine.get({ plain: true })),
+      routineData: routineData.map((routine) => routine.get({ plain: true })),
       logged_in: req.session.logged_in,
     });
   } catch (err) {
