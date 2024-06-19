@@ -16,7 +16,6 @@ document
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, users_name, password }),
         });
-        console.log(users_name);
         // This if statement checks if the response is okay.
         if (response.ok) {
           document.location.replace("/profile");

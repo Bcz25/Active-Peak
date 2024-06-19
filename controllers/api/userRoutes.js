@@ -16,7 +16,6 @@ router.get("/", async (req, res) => {
 
 // Route to create a new user.
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     // Create a new user with the password hashed.
     const newUser = await Users.create({

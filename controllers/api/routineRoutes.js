@@ -64,8 +64,6 @@ router.post("/saveRoutine", withAuth, async (req, res) => {
     // Get the user id from the session and the routine id from the request body.
     const UserId = req.session.user_id;
     const RoutineId = parseInt(req.body.routine_id);
-    console.log(UserId);
-    console.log(RoutineId);
     // Create a new association between the user and the routine.
     const newAssociation = await UserRoutine.create({
       UserId,
@@ -73,7 +71,6 @@ router.post("/saveRoutine", withAuth, async (req, res) => {
       custom_routine_name: req.body.custom_routine_name,
     });
     // Send the new association data back to the client.
-    console.log(newAssociation);
     res.status(200).json(newAssociation);
   } catch (err) {
     console.error(err);
